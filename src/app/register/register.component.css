@@ -1,0 +1,13 @@
+.error {
+  color: red;
+  margin-top: 10pt;
+  margin-bottom: 10pt;
+}
+
+h1 {
+	color: #840705;
+	font-family: "Alex Brush";
+	font-weight: bold;
+	font-size: 60px;
+	text-align: center;
+}

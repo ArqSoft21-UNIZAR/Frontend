@@ -1,0 +1,33 @@
+<div class="login">
+  <form class="custom-form" method="post">
+    <h1>Iniciar Sesión</h1>
+    <input
+      type="email"
+      [(ngModel)]="email"
+      name="email"
+      placeholder="Email..."
+      required="required"
+    />
+    <input
+      type="password"
+      [(ngModel)]="password"
+      name="password"
+      placeholder="Contraseña..."
+      required="required"
+    />
+    <button class="login" type="submit" (click)="login()">Iniciar sesion</button>
+  </form>
+  <hr />
+  <h2>¿No tienes una cuenta?</h2>
+  <button class="register" routerLink="/register">Registrate</button>
+ 
+</div>
+<div class="error">
+  <div *ngIf="userError">
+    El usuario o la contraseña son incorrectos
+  </div>
+
+  <div *ngIf="serviceError">
+    Ha ocurrido un error inesperado: {{this.serviceErrorMessage}}
+  </div>
+</div>
