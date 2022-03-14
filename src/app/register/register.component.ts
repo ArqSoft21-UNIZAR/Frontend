@@ -10,8 +10,13 @@ import { UsersService } from '../users.service';
 export class RegisterComponent implements OnInit {
   //Form
   email: string = "";
+  name: string = "";
+  surname: string = "";
   password: string = "";
   confirmPassword: string = "";
+  tagGood: string = "";
+  tagBad: string = "";
+
   
   //Error handling
   passwordError: boolean = false;
@@ -43,6 +48,10 @@ export class RegisterComponent implements OnInit {
         this.serviceErrorMessage = err.message
       }
     );
+  }
+
+  validate() {
+    return this.email == "" || this.password == "" || this.confirmPassword == "" || this.name == "" || this.surname == ""
   }
 
 }

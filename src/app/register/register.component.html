@@ -1,10 +1,12 @@
 <div class="register">
-    <form class="custom-form" method="post">
-      <h1>Regístrate</h1>
+  <form class="custom-form" method="post">
+    <h1>Registrarse</h1>
+    <div class="center">
       <input
         type="email"
         [(ngModel)]="email"
         name="email"
+        class="email"
         placeholder="Correo..."
         required="required"
       />
@@ -12,21 +14,65 @@
         type="password"
         [(ngModel)]="password"
         name="password"
+        class="password"
         placeholder="Contraseña..."
+        required="required"
+      />
+    </div>
+    <div class="center">
+      <input
+        type="text"
+        [(ngModel)]="name"
+        name="name"
+        class="name"
+        placeholder="Nombre..."
+        required="required"
+      />
+      <input
+        type="text"
+        [(ngModel)]="surname"
+        name="surname"
+        class="surname"
+        placeholder="Apellidos..."
         required="required"
       />
       <input
         type="password"
         [(ngModel)]="confirmPassword"
         name="password"
+        class="confirmPassword"
         placeholder="Repetir contraseña..."
         required="required"
       />
-    	<button type="submit" (click)="register()">Registrarse</button>
-    </form>
+    </div>
+    <hr />
+    <div class="center">
+      <h2>Adoro</h2>
+      <h2>Detesto</h2>
+    </div>
+    <div class="center">
+      <input
+        type="text"
+        [(ngModel)]="tagGood"
+        name="tagGood"
+        class="tag"
+        placeholder="Musica, fiesta, deporte, arte..."
+        required="required"
+      />
+      <input
+        type="text"
+        [(ngModel)]="tagBad"
+        name="tagBad"
+        class="tag"
+        placeholder="Arañas, Roncola..."
+        required="required"
+      />
+    </div>
+    <button type="submit" class="register" [disabled]="validate()" (click)="register()">Registrarse</button>
+  </form>
     
 
-    <div class="error">
+  <div class="error">
 		<div *ngIf="passwordError">
 			Las contraseñas no coinciden.
 		</div>
@@ -38,5 +84,5 @@
 		<div *ngIf="serviceError">
 			Ha ocurrido un error inesperado: {{this.serviceErrorMessage}}
 		</div>
-    </div>
   </div>
+</div>

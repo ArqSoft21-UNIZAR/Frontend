@@ -36,4 +36,8 @@ export class LoginComponent implements OnInit {
     );
   }
 
+  validate() {
+    return this.email == "" || this.password == ""
+  }
+
 }
