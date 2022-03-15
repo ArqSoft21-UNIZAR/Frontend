@@ -64,7 +64,6 @@ export class RegisterComponent implements OnInit {
   }
 
   validate() {
-    // TODO(Marcos): Actualizar esta funcion para que tenga en cuenta todos los campos
     return this.email == ""
     || this.password == ""
     || this.confirmPassword == ""
@@ -72,12 +71,14 @@ export class RegisterComponent implements OnInit {
     || this.surname == ""
     || this.tagBad.every((value) => value == "")
     || this.tagGood.every((value) => value == "")
+    || this.gender == ""
+    || this.provincia == ""
   }
 
   public provincia_opciones = [
     "Álava",
     "Albacete",
-    "Alacant",
+    "Alicante",
     "Almería",
     "Ávila",
     "Badajoz",
@@ -112,12 +113,12 @@ export class RegisterComponent implements OnInit {
     "Las Palmas",
     "Pontevedra",
     "Salamanca",
-    "Sta. Cruz de Tenerife",
     "Cantabria",
     "Segovia",
     "Sevilla",
     "Soria",
     "Tarragona",
+    "Tenerife",
     "Teruel",
     "Toledo",
     "Valéncia",

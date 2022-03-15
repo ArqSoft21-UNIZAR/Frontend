@@ -47,6 +47,7 @@ h2 {
 	margin-top: 5px;
 	margin-bottom: 10px;
 }
+
 label {
   color: #840705;
   font-family: "Helvetica";
@@ -55,6 +56,7 @@ label {
   text-align: center;
 
   margin: 10px;
+  margin-right: 5px;
 }
   
 .error {
@@ -67,7 +69,7 @@ label {
 }
   
 /*-------------------------- INPUT --------------------------*/
-  
+
 input {
   height: 40px;
   padding: 8px 8px 8px 8px;
@@ -91,23 +93,23 @@ input {
 }
 
 input.email {
-  width: 650px;
+  width: 450px;
 }
 
 input.password {
-  width: 396px;
+  width: 300px;
 }
 
 input.confirmPassword {
-  width: 396px;
+  width: 300px;
 }
 
 input.name {
-	width: 205px;
+	width: 150px;
 }
 
 input.surname {
-	width: 406px;
+	width: 260px;
 }
 
 input.tag {
@@ -116,6 +118,33 @@ input.tag {
   margin-left: 80px;
   margin-right: 80px;
 }
+
+select {
+  height: auto;
+  padding: 8px 8px 8px 8px;
+  
+  margin-bottom: 20px;
+  display: inline;
+  margin-left: 7px;
+  margin-right: 7px;
+  
+  background: white;
+  color: #840705;
+  border-color: #840705;
+	border-width: 5px;
+  border-style: solid;
+  border-radius: 30px 30px 30px 30px;
+
+  font-family: "Helvetica";
+  font-size: 18px;
+  line-height: 1.3;
+  text-align: left;
+}
+
+select.provincia {
+	margin-right: 75px;
+}
+
 
   /*-------------------------- BOTONES --------------------------*/
   
