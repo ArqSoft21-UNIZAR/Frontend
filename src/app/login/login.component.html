@@ -19,18 +19,18 @@
     />
     <button type="submit" class="login" [disabled]="validate()" (click)="login()">Iniciar sesion</button>
   </form>
+  <div class="error">
+    <div *ngIf="userError">
+      El usuario o la contraseña son incorrectos
+    </div>
+  
+    <div *ngIf="serviceError">
+      Ha ocurrido un error inesperado: {{this.serviceErrorMessage}}
+    </div>
+  </div>
 
   <hr />
   <h2>¿No tienes una cuenta?</h2>
   <button class="register" routerLink="/register">Registrate</button>
  
-</div>
-<div class="error">
-  <div *ngIf="userError">
-    El usuario o la contraseña son incorrectos
-  </div>
-
-  <div *ngIf="serviceError">
-    Ha ocurrido un error inesperado: {{this.serviceErrorMessage}}
-  </div>
 </div>

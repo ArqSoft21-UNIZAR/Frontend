@@ -14,8 +14,11 @@ export class RegisterComponent implements OnInit {
   surname: string = "";
   password: string = "";
   confirmPassword: string = "";
-  tagGood: string = "";
-  tagBad: string = "";
+  provincia: string = "";
+  gender: string = "";
+  age: number = 18;
+  tagGood: Array<string> = [];
+  tagBad: Array<string> = [];
 
   
   //Error handling
@@ -35,7 +38,17 @@ export class RegisterComponent implements OnInit {
       return;
     }
     this.passwordError = false;
-    const user = { email: this.email, password: this.password };
+    const user = { email: this.email, 
+                   password: this.password, 
+                   nombre: this.name,
+                   apellidos: this.surname,
+                   sexo: this.gender,
+                   edad: this.age,
+                   localidad: this.provincia,
+                   tagBuenos: this.tagGood,
+                   tagMalos: this.tagBad
+                  };
+    console.log(user)
     this.userService.register(user).subscribe(
       res => {
         // TODO(Marcos): Guardar con setToken algo de res para recordar que el login es correcto. Hacer set tambien de userError
@@ -51,7 +64,68 @@ export class RegisterComponent implements OnInit {
   }
 
   validate() {
-    return this.email == "" || this.password == "" || this.confirmPassword == "" || this.name == "" || this.surname == ""
+    // TODO(Marcos): Actualizar esta funcion para que tenga en cuenta todos los campos
+    return this.email == ""
+    || this.password == ""
+    || this.confirmPassword == ""
+    || this.name == ""
+    || this.surname == ""
+    || this.tagBad.every((value) => value == "")
+    || this.tagGood.every((value) => value == "")
   }
 
+  public provincia_opciones = [
+    "Álava",
+    "Albacete",
+    "Alacant",
+    "Almería",
+    "Ávila",
+    "Badajoz",
+    "Illes Balears",
+    "Barcelona",
+    "Burgos",
+    "Cáceres",
+    "Cádiz",
+    "Castelló",
+    "Ciudad Real",
+    "Córdoba",
+    "A Coruña",
+    "Cuenca",
+    "Girona",
+    "Granada",
+    "Guadalajara",
+    "Gipuzkoa",
+    "Huelva",
+    "Huesca",
+    "Jaén",
+    "León",
+    "Lleida",
+    "La Rioja",
+    "Lugo",
+    "Madrid",
+    "Málaga",
+    "Murcia",
+    "Nafarroa",
+    "Ourense",
+    "Asturias",
+    "Palencia",
+    "Las Palmas",
+    "Pontevedra",
+    "Salamanca",
+    "Sta. Cruz de Tenerife",
+    "Cantabria",
+    "Segovia",
+    "Sevilla",
+    "Soria",
+    "Tarragona",
+    "Teruel",
+    "Toledo",
+    "Valéncia",
+    "Valladolid",
+    "Bizkaia",
+    "Zamora",
+    "Zaragoza",
+    "Ceuta",
+    "Melilla",
+  ]
 }

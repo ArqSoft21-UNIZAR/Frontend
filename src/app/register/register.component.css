@@ -1,7 +1,7 @@
 /*-------------------------- RECTANGULO BASE --------------------------*/
 div.register {
 	width: 1241px;
-	height: 650px;
+	height: auto;
 	padding: 8px 8px 8px 8px;
 	
 	margin-top: 20px;
@@ -47,9 +47,21 @@ h2 {
 	margin-top: 5px;
 	margin-bottom: 10px;
 }
+label {
+  color: #840705;
+  font-family: "Helvetica";
+  font-weight: bold;
+  font-size: 24px;
+  text-align: center;
+
+  margin: 10px;
+}
   
 .error {
 	color: black;
+  font-family: "Helvetica";
+  font-weight: bold;
+  text-align: center;
 	margin-top: 10px;
 	margin-bottom: 10px;
 }
@@ -99,11 +111,10 @@ input.surname {
 }
 
 input.tag {
+  width: 340px;
+  height: 20px;
   margin-left: 80px;
   margin-right: 80px;
-  
-  width: 340px;
-  height: 120px;
 }
 
   /*-------------------------- BOTONES --------------------------*/

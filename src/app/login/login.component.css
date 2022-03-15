@@ -1,7 +1,7 @@
 /*-------------------------- RECTANGULO BASE --------------------------*/
 div.login {
   width: 815px;
-  height: 540px;
+  height: auto;
   padding: 8px 8px 8px 8px;
   
   margin-top: 20px;
@@ -37,6 +37,9 @@ h2 {
 
 .error {
   color: black;
+  font-family: "Helvetica";
+  font-weight: bold;
+  text-align: center;
   margin-top: 10px;
   margin-bottom: 10px;
 }
@@ -101,6 +104,7 @@ button.register {
   width: 224px;
   height: 42px;
   margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 button:hover{

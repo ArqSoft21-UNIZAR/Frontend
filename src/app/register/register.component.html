@@ -45,6 +45,37 @@
         required="required"
       />
     </div>
+    <div class="center">
+      <label for="age">Edad:</label>
+      <input
+        type="number"
+        [(ngModel)]="age"
+        name="age"
+        class="age"
+        min="18"
+        max="99"
+        required="required"
+      />
+      <label for="gender">Sexo:</label>
+      <select class="gender"
+              [(ngModel)]="this.gender"
+              name="gender"
+              required="required"
+              placeholder="Sexo">
+        <option value="M">Hombre</option>
+        <option value="F">Mujer</option>
+        <option value="X">Otro</option>
+      </select>
+      <label for="provincia">Provincia:</label>
+      <select class="provincia"
+              required="required"
+              [(ngModel)]="this.provincia"
+              name="provincia">
+        <option *ngFor="let item of provincia_opciones" value="{{item}}">
+          {{item}}
+        </option>
+      </select>
+    </div>
     <hr />
     <div class="center">
       <h2>Adoro</h2>
@@ -53,18 +84,50 @@
     <div class="center">
       <input
         type="text"
-        [(ngModel)]="tagGood"
-        name="tagGood"
+        [(ngModel)]="tagGood[0]"
+        name="tagGood0"
         class="tag"
-        placeholder="Musica, fiesta, deporte, arte..."
+        placeholder="Musica..."
         required="required"
       />
       <input
         type="text"
-        [(ngModel)]="tagBad"
-        name="tagBad"
+        [(ngModel)]="tagBad[0]"
+        name="tagBad0"
         class="tag"
-        placeholder="Arañas, Roncola..."
+        placeholder="Arañas..."
+        required="required"
+      />
+      <input
+        type="text"
+        [(ngModel)]="tagGood[1]"
+        name="tagGood1"
+        class="tag"
+        placeholder="Deporte..."
+        required="required"
+      />
+      <input
+        type="text"
+        [(ngModel)]="tagBad[1]"
+        name="tagBad1"
+        class="tag"
+        placeholder="Roncola..."
+        required="required"
+      />
+      <input
+        type="text"
+        [(ngModel)]="tagGood[2]"
+        name="tagGood2"
+        class="tag"
+        placeholder="Arte..."
+        required="required"
+      />
+      <input
+        type="text"
+        [(ngModel)]="tagBad[2]"
+        name="tagBad2"
+        class="tag"
+        placeholder="Justin Bieber..."
         required="required"
       />
     </div>
