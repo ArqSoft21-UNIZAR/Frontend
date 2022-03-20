@@ -1,0 +1,149 @@
+<div class="register">
+  <form class="custom-form" method="post">
+    <h1>Registrarse</h1>
+    <div class="center">
+      <input
+        type="email"
+        [(ngModel)]="email"
+        name="email"
+        class="email"
+        placeholder="Correo..."
+        required="required"
+      />
+      <input
+        type="password"
+        [(ngModel)]="password"
+        name="password"
+        class="password"
+        placeholder="Contraseña..."
+        required="required"
+      />
+      <label for="age">Edad:</label>
+      <input
+        type="number"
+        [(ngModel)]="age"
+        name="age"
+        class="age"
+        min="18"
+        max="99"
+        required="required"
+      />
+      <label for="gender">Sexo:</label>
+      <select class="gender"
+              [(ngModel)]="this.gender"
+              name="gender"
+              required="required"
+              placeholder="Sexo">
+        <option value="M">Hombre</option>
+        <option value="F">Mujer</option>
+        <option value="X">Otro</option>
+      </select>
+    </div>
+    <div class="center">
+      <input
+        type="text"
+        [(ngModel)]="name"
+        name="name"
+        class="name"
+        placeholder="Nombre..."
+        required="required"
+      />
+      <input
+        type="text"
+        [(ngModel)]="surname"
+        name="surname"
+        class="surname"
+        placeholder="Apellido..."
+        required="required"
+      />
+      <input
+        type="password"
+        [(ngModel)]="confirmPassword"
+        name="password"
+        class="confirmPassword"
+        placeholder="Repetir contraseña..."
+        required="required"
+      />
+      <label for="provincia">Provincia:</label>
+      <select class="provincia"
+              required="required"
+              [(ngModel)]="this.provincia"
+              name="provincia">
+        <option *ngFor="let item of provincia_opciones" value="{{item}}">
+          {{item}}
+        </option>
+      </select>
+    </div>
+    <hr />
+    <div class="center">
+      <h2>Adoro</h2>
+      <h2>Detesto</h2>
+    </div>
+    <div class="center">
+      <input
+        type="text"
+        [(ngModel)]="tagGood[0]"
+        name="tagGood0"
+        class="tag"
+        placeholder="Musica..."
+        required="required"
+      />
+      <input
+        type="text"
+        [(ngModel)]="tagBad[0]"
+        name="tagBad0"
+        class="tag"
+        placeholder="Arañas..."
+        required="required"
+      />
+      <input
+        type="text"
+        [(ngModel)]="tagGood[1]"
+        name="tagGood1"
+        class="tag"
+        placeholder="Deporte..."
+        required="required"
+      />
+      <input
+        type="text"
+        [(ngModel)]="tagBad[1]"
+        name="tagBad1"
+        class="tag"
+        placeholder="Roncola..."
+        required="required"
+      />
+      <input
+        type="text"
+        [(ngModel)]="tagGood[2]"
+        name="tagGood2"
+        class="tag"
+        placeholder="Arte..."
+        required="required"
+      />
+      <input
+        type="text"
+        [(ngModel)]="tagBad[2]"
+        name="tagBad2"
+        class="tag"
+        placeholder="Justin Bieber..."
+        required="required"
+      />
+    </div>
+    <button type="submit" class="register" [disabled]="validate()" (click)="register()">Registrarse</button>
+  </form>
+    
+
+  <div class="error">
+		<div *ngIf="passwordError">
+			Las contraseñas no coinciden.
+		</div>
+
+		<div *ngIf="userError">
+			Un usuario con el correo proporcionado ya existe.
+		</div>
+
+		<div *ngIf="serviceError">
+			Ha ocurrido un error inesperado: {{this.serviceErrorMessage}}
+		</div>
+  </div>
+</div>

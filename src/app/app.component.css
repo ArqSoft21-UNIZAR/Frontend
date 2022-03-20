@@ -1,0 +1,11 @@
+.navbar {
+	background: #840705;
+  height: 110px;
+}
+.logo {
+  display: block;
+  width: 103px;
+  height: 103px;
+  margin-left: auto;
+  margin-right: auto;
+}
