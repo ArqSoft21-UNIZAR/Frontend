@@ -23,6 +23,9 @@ h2 {
 
 input {
   height: 40px;
+  display: inline;
+  margin-left: 7px;
+  margin-right: 7px;
 }
 
 input.email {
