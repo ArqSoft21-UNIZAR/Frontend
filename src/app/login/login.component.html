@@ -1,4 +1,4 @@
-<div class="login">
+<div class="login default">
   <form class="custom-form" method="post">
     <h1>Iniciar sesión</h1>
     <input
@@ -17,7 +17,7 @@
       placeholder="Contraseña..."
       required="required"
     />
-    <button type="submit" class="login" [disabled]="validate()" (click)="login()">Iniciar sesion</button>
+    <button type="submit" class="login red" [disabled]="validate()" (click)="login()">Iniciar sesion</button>
   </form>
   <div class="error">
     <div *ngIf="userError">
