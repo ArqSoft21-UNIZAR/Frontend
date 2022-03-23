@@ -7,7 +7,7 @@
 div.default {
   padding: 8px 8px 8px 8px;
   
-  margin-top: 20px;
+  margin-top: 1em;
   margin-left: auto;
   margin-right: auto;
   
@@ -32,8 +32,8 @@ h1 {
   font-weight: bold;
   font-size: 60px;
   text-align: center;
-  margin-top: 5px;
-  margin-bottom: 10px;
+  margin-top: 0.25em;
+  margin-bottom: 0.25em;
 }
 
 h2 {
@@ -51,8 +51,8 @@ label {
   font-size: 24px;
   text-align: center;
 
-  margin: 10px;
-  margin-right: 5px;
+  margin: 10ch;
+  margin-right: 5ch;
 }
 
 .error {
@@ -60,15 +60,16 @@ label {
   font-family: "Helvetica";
   font-weight: bold;
   text-align: center;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin-top: 1em;
+  margin-bottom: 1em;
 }
 
 /*-------------------------- INPUT --------------------------*/
 input {
   padding: 8px 8px 8px 8px;
 
-  margin-bottom: 20px;
+  margin-top: 1em;
+  margin-bottom: 1em;
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -134,8 +135,8 @@ button:disabled{
 /*-------------------------- OTROS --------------------------*/
 hr {
   height: 1px;
-  margin-top: 30px;
-  margin-bottom: 10px;
+  margin-top: 1.5em;
+  margin-bottom: 1em;
   color: #840705;
   border-width: 2px;
   border-style: solid;

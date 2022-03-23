@@ -1,29 +1,33 @@
 /*-------------------------- RECTANGULO BASE --------------------------*/
 
 div.login {
-  width: 815px;
+  width: 60vw;
   height: auto;
 }
 
 /*-------------------------- INPUT --------------------------*/
 
 input {
-  width: 631px;
+  width: 50%;
 	height: 40px;
 }
 
 /*-------------------------- BOTONES --------------------------*/
 
 button.login {
-  width: 224px;
+  width: 25%;
   height: 81px;
   padding: 8px 8px 8px 8px;
-  margin-top: 30px;  
+
 }
 
 button.register {
-  width: 224px;
+  width: 25%;
   height: 42px;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+hr {
+  width: 60%;
 }
