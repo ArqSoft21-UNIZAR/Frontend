@@ -2,12 +2,12 @@
     position:relative;
 }
 
-#Overview img {
-    width: 150px;
-    height: 150px;
+img {
+    width: 80vh;
+    height: 80vh;
     position: absolute;
     top: 50px;
-    left: 50px;
+    left: -40%;
 }
 
 /* Split the screen */
@@ -42,11 +42,6 @@
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-}
-
-  /* Style the image inside the centered container, if needed */
-.left img {
-    width: 150px;
 }
 
 /*-------------------------- TEXTO --------------------------*/
