@@ -51,8 +51,8 @@ label {
   font-size: 24px;
   text-align: center;
 
-  margin: 10ch;
-  margin-right: 5ch;
+  margin-right: 1ch;
+  margin-left: 0.5ch;
 }
 
 .error {

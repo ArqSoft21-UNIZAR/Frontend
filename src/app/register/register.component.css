@@ -1,7 +1,7 @@
 /*-------------------------- DIVS --------------------------*/
 
 div.register {
-	width: 1241px;
+	width: 80vw;
 	height: auto;
 }
 
@@ -29,40 +29,40 @@ input {
 }
 
 input.email {
-  width: 450px;
+  width: 26vw;
 }
 
 input.password {
-  width: 300px;
+  width: 18vw;
 }
 
 input.confirmPassword {
-  width: 300px;
+  width: 18vw;
 }
 
 input.name {
-	width: 150px;
+	width: 12vw;
 }
 
 input.surname {
-	width: 260px;
+	width: 20vw;
 }
 
 input.tag {
-  width: 340px;
+  width: 20vw;
   height: 20px;
   margin-left: 80px;
   margin-right: 80px;
+  margin-top: 0.25em;
+  margin-bottom: 0.25em;
 }
 
 select {
   height: auto;
   padding: 8px 8px 8px 8px;
   
-  margin-bottom: 20px;
+  margin-bottom: 1em;
   display: inline;
-  margin-left: 7px;
-  margin-right: 7px;
   
   background: white;
   color: #840705;
@@ -77,17 +77,18 @@ select {
   text-align: left;
 }
 
-select.provincia {
-	margin-right: 75px;
-}
-
 /*-------------------------- BOTONES --------------------------*/
   
 button.register {
-	width: 202px;
+	width: 20%;
 	height: 52px;
 	padding: 8px 8px 8px 8px;
-	margin-top: 30px;  
+	margin-top: 1em;  
 }
-  
+
+/*-------------------------- OTROS --------------------------*/
+
+hr {
+  width: 70vw;
+}
   
