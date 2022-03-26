@@ -75,26 +75,15 @@
       </select>
     </div>
     <hr />
-    <div class="center">
-      <!-- TODO(Marcos): Esto no son dos columnas de HTML... -->
+    <div class="split">
       <h2>Adoro</h2>
-      <h2>Detesto</h2>
-    </div>
-    <div class="center">
+      <br>
       <input
         type="text"
         [(ngModel)]="tagGood[0]"
         name="tagGood0"
         class="tag"
         placeholder="Musica..."
-        required="required"
-      />
-      <input
-        type="text"
-        [(ngModel)]="tagBad[0]"
-        name="tagBad0"
-        class="tag"
-        placeholder="Arañas..."
         required="required"
       />
       <input
@@ -107,18 +96,30 @@
       />
       <input
         type="text"
-        [(ngModel)]="tagBad[1]"
-        name="tagBad1"
-        class="tag"
-        placeholder="Roncola..."
-        required="required"
-      />
-      <input
-        type="text"
         [(ngModel)]="tagGood[2]"
         name="tagGood2"
         class="tag"
         placeholder="Arte..."
+        required="required"
+      />
+    </div>
+    <div class="split">
+      <h2>Detesto</h2>
+      <br>
+      <input
+        type="text"
+        [(ngModel)]="tagBad[0]"
+        name="tagBad0"
+        class="tag"
+        placeholder="Arañas..."
+        required="required"
+      />
+      <input
+        type="text"
+        [(ngModel)]="tagBad[1]"
+        name="tagBad1"
+        class="tag"
+        placeholder="Roncola..."
         required="required"
       />
       <input

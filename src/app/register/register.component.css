@@ -5,6 +5,14 @@ div.register {
 	height: auto;
 }
 
+div.split {
+  height: 100%;
+  width: 50%;
+  display: inline-block;
+  text-align: center;
+  overflow-x: hidden;
+}
+
 /*-------------------------- TEXTO --------------------------*/
 
 h2 {
@@ -14,7 +22,6 @@ h2 {
   font-weight: bold;
   font-size: 44px;
   text-align: center;
-  margin: 200px;
 	margin-top: 5px;
 	margin-bottom: 10px;
 }
@@ -51,8 +58,6 @@ input.surname {
 input.tag {
   width: 20vw;
   height: 20px;
-  margin-left: 80px;
-  margin-right: 80px;
   margin-top: 0.25em;
   margin-bottom: 0.25em;
 }
