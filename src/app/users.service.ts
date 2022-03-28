@@ -10,12 +10,16 @@ export class UsersService {
 
   constructor(private http: HttpClient, private cookies: CookieService) {}
 
-  login(user: any): Observable<any> {
-    return this.http.post("<DIRECCION WEB API>", user);
+  login(body: any): Observable<any> {
+    return this.http.post("<DIRECCION WEB API>", body);
   }
 
-  register(user: any): Observable<any> {
-    return this.http.post("<DIRECCION WEB API>", user);
+  register(body: any): Observable<any> {
+    return this.http.post("<DIRECCION WEB API>", body);
+  }
+
+  get(body:any): Observable<any> {
+    return this.http.post("<DIRECCION WEB API>", body);
   }
 
   // Cookies
