@@ -24,7 +24,14 @@ div.center {
 	margin-right: auto;
   text-align: center;
 }
-  
+
+.split {
+  display: inline-block;
+  height: 100%;
+  width: 50%;
+  overflow-x: hidden;
+}
+
 /*-------------------------- TEXTO --------------------------*/
 h1 {
   color: #840705;

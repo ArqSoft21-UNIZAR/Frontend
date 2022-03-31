@@ -13,6 +13,10 @@ div.split {
   overflow-x: hidden;
 }
 
+div.group {
+  display: inline-block;
+  margin: 0px;
+}
 /*-------------------------- TEXTO --------------------------*/
 
 h2 {
@@ -36,7 +40,7 @@ input {
 }
 
 input.email {
-  width: 26vw;
+  width: 22vw;
 }
 
 input.password {
@@ -48,11 +52,11 @@ input.confirmPassword {
 }
 
 input.name {
-	width: 12vw;
+	width: 10vw;
 }
 
 input.surname {
-	width: 20vw;
+	width: 15vw;
 }
 
 input.tag {
