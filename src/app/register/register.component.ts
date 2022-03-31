@@ -45,8 +45,8 @@ export class RegisterComponent implements OnInit {
                    sexo: this.gender,
                    edad: this.age,
                    localidad: this.provincia,
-                   tagBuenos: this.tagGood,
-                   tagMalos: this.tagBad
+                   tagBuenos: this.tagGood.map(str => str.toLowerCase()),
+                   tagMalos: this.tagBad.map(str => str.toLowerCase()),
                   };
     console.log(user)
     this.userService.register(user).subscribe(
