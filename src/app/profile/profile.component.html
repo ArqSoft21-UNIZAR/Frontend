@@ -1,0 +1,137 @@
+<div class="default profile">
+    <h1>Perfil</h1>
+    <!-- Perfil de otra persona -->
+    <div *ngIf="this.userService.getToken() != this.profileID">
+        <div class="split left">
+            {{this.name}} {{this.surname}}
+            <br>
+            {{this.gender}}
+        </div>
+        <div class="split right">
+            {{this.age}} años
+            <br>
+            {{this.provincia}}
+        </div>
+    </div>
+    <!-- Tu perfil -->
+    <div *ngIf="this.userService.getToken() == this.profileID">
+        <form class="custom-form" method="post">
+            <div class="center">
+                <input
+                  type="text"
+                  [(ngModel)]="name"
+                  name="name"
+                  class="name"
+                  placeholder="Nombre..."
+                  required="required"
+                />
+                <input
+                  type="text"
+                  [(ngModel)]="surname"
+                  name="surname"
+                  class="surname"
+                  placeholder="Apellido..."
+                  required="required"
+                />
+                <div class="group">
+                    <label for="gender">Sexo:</label>
+                    <select class="gender"
+                            [(ngModel)]="this.gender"
+                            name="gender"
+                            required="required"
+                            placeholder="Sexo">
+                      <option value="Hombre">Hombre</option>
+                      <option value="Mujer">Mujer</option>
+                      <option value="Otro">Otro</option>
+                    </select>
+                </div>
+              </div>
+            <div class="center">
+              <div class="group">
+                <div class="group">
+                  <label for="age">Edad:</label>
+                  <input
+                    type="number"
+                    [(ngModel)]="age"
+                    name="age"
+                    class="age"
+                    min="18"
+                    max="99"
+                    required="required"
+                  />
+                </div>
+                <div class="group">
+                    <label for="provincia">Provincia:</label>
+                    <select class="provincia"
+                            required="required"
+                            [(ngModel)]="this.provincia"
+                            name="provincia">
+                      <option *ngFor="let item of provincia_opciones" value="{{item}}">
+                        {{item}}
+                      </option>
+                    </select>
+                  </div>
+              </div>
+            </div>
+            
+            <hr />
+            <div class="split">
+              <h2>Adoro</h2>
+              <br>
+              <input
+                type="text"
+                [(ngModel)]="tagGood[0]"
+                name="tagGood0"
+                class="tag"
+                placeholder="Musica..."
+                required="required"
+              />
+              <input
+                type="text"
+                [(ngModel)]="tagGood[1]"
+                name="tagGood1"
+                class="tag"
+                placeholder="Deporte..."
+                required="required"
+              />
+              <input
+                type="text"
+                [(ngModel)]="tagGood[2]"
+                name="tagGood2"
+                class="tag"
+                placeholder="Arte..."
+                required="required"
+              />
+            </div>
+            <div class="split">
+              <h2>Detesto</h2>
+              <br>
+              <input
+                type="text"
+                [(ngModel)]="tagBad[0]"
+                name="tagBad0"
+                class="tag"
+                placeholder="Arañas..."
+                required="required"
+              />
+              <input
+                type="text"
+                [(ngModel)]="tagBad[1]"
+                name="tagBad1"
+                class="tag"
+                placeholder="Roncola..."
+                required="required"
+              />
+              <input
+                type="text"
+                [(ngModel)]="tagBad[2]"
+                name="tagBad2"
+                class="tag"
+                placeholder="Justin Bieber..."
+                required="required"
+              />
+            </div>
+            <button type="submit" class="update red" [disabled]="validate()" (click)="updateProfile()">Actualizar perfil</button>
+          </form>
+    </div>
+</div>

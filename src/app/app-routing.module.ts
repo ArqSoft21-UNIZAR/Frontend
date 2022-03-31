@@ -4,14 +4,16 @@ import { HomeComponent } from './home/home.component';
 import { LandingComponent } from './landing/landing.component';
 import { LoginComponent } from './login/login.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { ProfileComponent } from './profile/profile.component';
 import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
-  { path: "", component: LandingComponent, pathMatch: "full" },
-  { path: "home", component: HomeComponent, pathMatch: "full" },
-  { path: "login", component: LoginComponent, pathMatch: "full" },
-  { path: "register", component: RegisterComponent, pathMatch: "full" },
-  { path: "**", component: PageNotFoundComponent }//NOTE: Este tiene que ser SIEMPRE el ultimo
+  { path: "", component: LandingComponent},
+  { path: "home", component: HomeComponent},
+  { path: "login", component: LoginComponent},
+  { path: "register", component: RegisterComponent},
+  { path: "profile/:id", component: ProfileComponent},
+  { path: "**", component: PageNotFoundComponent } //NOTE: Este tiene que ser SIEMPRE el ultimo
 ];
 
 @NgModule({
