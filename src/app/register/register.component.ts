@@ -49,18 +49,21 @@ export class RegisterComponent implements OnInit {
                    tagMalos: this.tagBad.map(str => str.toLowerCase()),
                   };
     console.log(user)
-    this.userService.register(user).subscribe(
-      res => {
+
+    
+    this.userService.register(user).subscribe({
+      next: (v) => {
         // TODO(Marcos): Guardar con setToken algo de res para recordar que el login es correcto. Hacer set tambien de userError
         // this.userService.setToken(res.algo);
         // NOTE(Marcos): Para borrar la cookie (hacer logout): this.cookies.delete("token");
         this.router.navigateByUrl('/');
       },
-      err => {
+      error: (e) => {
+        console.error(e)
         this.serviceError = true
-        this.serviceErrorMessage = err.message
+        this.serviceErrorMessage = e.message
       }
-    );
+    });
   }
 
   validate() {

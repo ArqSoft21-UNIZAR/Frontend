@@ -21,19 +21,20 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    const user = {email: this.email, password: this.password};
-    this.userService.login(user).subscribe(
-      res => {
-        // TODO(Marcos): Guardar con setToken algo de res para recordar que el login es correcto. Tocar userError tambien
+    const user = {email: this.email, hashContrasena: this.password};
+    this.userService.login(user).subscribe({
+      next: (v) => {
+        // TODO(Marcos): Guardar con setToken algo de res para recordar que el login es correcto. Hacer set tambien de userError
         // this.userService.setToken(res.algo);
         // NOTE(Marcos): Para borrar la cookie (hacer logout): this.cookies.delete("token");
         this.router.navigateByUrl('/');
       },
-      err => {
+      error: (e) => {
+        console.error(e)
         this.serviceError = true
-        this.serviceErrorMessage = err.message
+        this.serviceErrorMessage = e.message
       }
-    );
+    });
   }
 
   validate() {
