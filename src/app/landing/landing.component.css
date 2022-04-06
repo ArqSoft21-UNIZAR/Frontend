@@ -1,0 +1,90 @@
+#Overview {
+    position:relative;
+}
+
+img {
+    width: 80vh;
+    height: 80vh;
+    position: absolute;
+    top: 50px;
+    left: -40%;
+}
+
+/* Split the screen */
+.split {
+    height: 100%;
+    width: 50%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+/* Control the left side */
+.left {
+    left: 0;
+    width: 37%;
+    background-color: #840705;
+}
+  
+  /* Control the right side */
+.right {
+    right: 0;
+    width: 63%;
+    background-color: ghostwhite;
+}
+  
+  /* If you want the content centered horizontally and vertically */
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+/*-------------------------- TEXTO --------------------------*/
+
+h1 {
+      color: #840705;
+    font-family: "Alex Brush";
+    font-weight: bold;
+    font-size: 100px;
+    text-align: center;
+}
+
+h2 {
+      color: #840705;
+    font-family: "Alex Brush";
+    font-weight: bold;
+    font-size: 36px;
+    text-align: center;
+}
+
+#outer {
+    width:100%;
+    text-align: center;
+}
+
+.inner {
+    display: inline-block;
+}
+
+/*-------------------------- BOTONES --------------------------*/
+
+button.login {
+    width: 175px;
+    height: 81px;
+    padding: 8px 8px 8px 8px;
+    margin-top: 30px;
+    margin-right: 25px;
+}
+  
+button.register {
+    width: 175px;
+    padding: 8px 8px 8px 8px;
+    height: 81px;
+    margin-top: 30px;
+    margin-left: 25px;
+}
