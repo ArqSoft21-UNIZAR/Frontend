@@ -15,8 +15,9 @@
     </div>
     <!-- Tu perfil -->
     <div *ngIf="this.userService.getToken() == this.profileID">
-        <form class="custom-form" method="post">
-            <div class="center">
+      <img src="assets/account-circle.png">
+      <form class="custom-form" method="post">
+        <div class="center">
                 <input
                   type="text"
                   [(ngModel)]="name"

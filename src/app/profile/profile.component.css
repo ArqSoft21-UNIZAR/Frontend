@@ -103,4 +103,11 @@ button.update {
 hr {
   width: 70vw;
 }
+
+img {
+  position: fixed;
+  top: 17%;
+  left: 13%;
+  width: 15%;
+}
   
