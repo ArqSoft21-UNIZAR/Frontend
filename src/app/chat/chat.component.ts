@@ -17,8 +17,7 @@ export class ChatComponent implements OnInit {
 
   //Ejecutado cada vez que se modifica el input.
   changeData(m:string) {
-    console.log(m)
-    this.message = m
-    this.nCaracteres = m.length
+    this.message = m;
+    this.nCaracteres = m.length;
   }
 }
