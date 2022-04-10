@@ -21,20 +21,25 @@ export class ProfileComponent implements OnInit {
   serviceError: boolean = false;
   serviceErrorMessage: string = "";
 
-  constructor(public userService: UsersService, public route: ActivatedRoute) { }
+  constructor(public userService: UsersService, public route: ActivatedRoute, public router: Router) { }
 
   ngOnInit(): void {
     this.profileID = this.route.snapshot.paramMap.get('id'); //Parametro de la url
-    const body = { email: this.profileID };
-    this.userService.get(body).subscribe(
-      res => {
-        // TODO(Marcos): Guardar informacion de vuelta
-      },
-      err => {
-        this.serviceError = true
-        this.serviceErrorMessage = err.message
-      }
-    );
+    if (this.profileID !== null) {
+      this.userService.get(this.profileID).subscribe({
+        next: (v) => {
+          // TODO(Marcos): Guardar informacion de vuelta
+        },
+        error: (e) => {
+          console.error(e)
+          this.serviceError = true
+          this.serviceErrorMessage = e.message
+        }
+      });
+    }
+    else {
+      this.router.navigateByUrl("/404")
+    }
     //Pruebas:
     this.userService.setToken("test")
     this.name = "Maria";
@@ -56,25 +61,19 @@ export class ProfileComponent implements OnInit {
   }
 
   updateProfile() {
-    const user = { 
-      nombre: this.name,
-      apellidos: this.surname,
-      sexo: this.gender,
-      edad: this.age,
-      localidad: this.provincia,
-      tagBuenos: this.tagGood,
-      tagMalos: this.tagBad
-     };
-    console.log(user)
-    this.userService.register(user).subscribe(
-      res => {
-        //TODO: Algo de feedback al usuario
+    this.userService.edit(this.name, this.surname, this.gender, this.age, this.provincia, this.tagGood, this.tagBad).subscribe({
+      next: (v) => {
+        // TODO(Marcos): Guardar con setToken algo de res para recordar que el login es correcto. Hacer set tambien de userError
+        // this.userService.setToken(res.algo);
+        // NOTE(Marcos): Para borrar la cookie (hacer logout): this.cookies.delete("token");
+        
       },
-      err => {
+      error: (e) => {
+        console.error(e)
         this.serviceError = true
-        this.serviceErrorMessage = err.message
+        this.serviceErrorMessage = e.message
       }
-    );
+    });
   }
 
   public provincia_opciones = [

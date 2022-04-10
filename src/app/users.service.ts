@@ -10,24 +10,55 @@ export class UsersService {
 
   constructor(private http: HttpClient, private cookies: CookieService) {}
 
-  login(body: any): Observable<any> {
-    return this.http.post("https://localhost:7022/users/login", body, {responseType: 'text'});
+  login(email:string, password:string): Observable<any> {
+    
+    return this.http.post("https://localhost:7022/users/login",
+                          {email: email, password: password},
+                          {responseType: 'text'}); //Esto es temporal
   }
 
-  register(body: any): Observable<any> {
-    return this.http.post("<DIRECCION WEB API>", body);
+  register(email:string, password:string, name:string, surname:string, gender:string, age:number, provincia:string, tagGood:string[], tagBad:string[]): Observable<any> {
+    return this.http.post("<DIRECCION WEB API>", //TODO
+                          {
+                            email: email, 
+                            password: password, 
+                            nombre: name,
+                            apellidos: surname,
+                            sexo: gender,
+                            edad: age,
+                            localidad: provincia,
+                            tagBuenos: tagGood.map(str => str.toLowerCase()),
+                            tagMalos: tagBad.map(str => str.toLowerCase())
+                          },
+                          {responseType: 'text'}); //Esto es temporal
   }
 
-  get(body:any): Observable<any> {
-    return this.http.post("<DIRECCION WEB API>", body);
+  get(email:string): Observable<any> {
+    return this.http.post("<DIRECCION WEB API>", //TODO
+                          {email: email},
+                          {responseType: 'text'}); //Esto es temporal
+  }
+
+  edit(name:string, surname:string, gender:string, age:number, provincia:string, tagGood:string[], tagBad:string[]): Observable<any> {
+    return this.http.post("<DIRECCION WEB API>", //TODO
+                          {
+                            nombre: name,
+                            apellidos: surname,
+                            sexo: gender,
+                            edad: age,
+                            localidad: provincia,
+                            tagBuenos: tagGood.map(str => str.toLowerCase()),
+                            tagMalos: tagBad.map(str => str.toLowerCase())
+                          },
+                          {responseType: 'text'}); //Esto es temporal
   }
 
   // Cookies
   setToken(token: string) {
-    this.cookies.set("token", token);
+    this.cookies.set("tokenMeetMe", token);
   }
 
   getToken() {
-    return this.cookies.get("token");
+    return this.cookies.get("tokenMeetMe");
   }
 }

@@ -12,6 +12,8 @@ import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { LandingComponent } from './landing/landing.component';
 import { ProfileComponent } from './profile/profile.component';
+import { ChatComponent } from './chat/chat.component';
+import { NgCircleProgressModule } from 'ng-circle-progress';
 
 @NgModule({
   declarations: [
@@ -21,13 +23,28 @@ import { ProfileComponent } from './profile/profile.component';
     HomeComponent,
     PageNotFoundComponent,
     LandingComponent,
-    ProfileComponent
+    ProfileComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgCircleProgressModule.forRoot({
+      radius: 50,
+      outerStrokeWidth: 16,
+      innerStrokeWidth: 0,
+      outerStrokeColor: "ghostwhite",
+      titleFontWeight: '900',
+      titleColor: "ghostwhite",
+      showSubtitle: false,
+      showUnits: false,
+      renderOnClick: false,
+      animation: false,
+      lazy : false,
+      clockwise: false,
+    })
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]

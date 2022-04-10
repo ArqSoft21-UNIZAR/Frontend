@@ -51,7 +51,7 @@ h2 {
   text-align: center;
 }
 
-label {
+label, div.text, div.message {
   color: #840705;
   font-family: "Helvetica";
   font-weight: bold;

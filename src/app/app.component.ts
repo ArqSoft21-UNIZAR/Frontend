@@ -1,23 +1,16 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { UsersService } from './users.service';
+import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
+import { UtilityService } from './utility.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'Meet Me';
-  constructor(public userService: UsersService, public router: Router) { }
-
-  goHome() {
-    console.log(this.userService.getToken())
-    if (this.userService.getToken()=="") {
-      this.router.navigateByUrl("")
-    }
-    else {
-      this.router.navigateByUrl("home")
-    }
+  constructor(public utilityService: UtilityService, public titleService: Title) { }  
+  ngOnInit(): void {
+    this.titleService.setTitle("Meet me")
   }
 }

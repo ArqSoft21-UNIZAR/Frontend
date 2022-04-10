@@ -1,0 +1,17 @@
+<div class="chat">
+    <div class="area">
+        <div *ngFor="let item of history" [ngClass]="'message ' + (item.isSent ? 'sent' : 'recieved')">
+            {{item.message}}
+        </div>
+    </div>
+    <div class="bottom">
+        <input type="text" [ngModel]="message" (keydown.enter)="send()" (ngModelChange)="changeData($event)" placeholder="Se tu mismo...">
+        <circle-progress
+            [percent]="100-(nCaracteres/2.8)"
+            [title]="nCaracteres<=280 ? (280-nCaracteres).toString(): '0'"
+        ></circle-progress>
+        <img src="assets/send.png" (click)="send()">
+    </div>
+</div>
+
+<!-- https://github.com/bootsoon/ng-circle-progress/issues/88 -->

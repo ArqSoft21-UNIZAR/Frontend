@@ -8,15 +8,41 @@ div.profile {
 
 div.split {
   height: 100%;
-  width: 50%;
+  width: 33.33%;
   display: inline-block;
   text-align: center;
   overflow-x: hidden;
 }
 
+div.left {
+  width: 50%;
+}
+
+div.right {
+  width: 50%;
+}
+
+div.left20 {
+  width: 30%;
+  text-align: end;
+}
+
+div.right80 {
+  width: 70%;
+}
+
 div.group {
   display: inline-block;
   margin: 0px;
+}
+
+div.text {
+  width: 22vw;
+}
+
+div.vcenter {
+  display: flex;
+  align-items: center;
 }
 
 /*-------------------------- TEXTO --------------------------*/
@@ -102,5 +128,10 @@ button.update {
 
 hr {
   width: 70vw;
+}
+
+img {
+  max-width: 30ch;
+  max-height: 30ch;
 }
   
