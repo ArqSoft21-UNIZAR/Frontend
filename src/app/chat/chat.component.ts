@@ -15,9 +15,10 @@ export class ChatComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  //Ejecutado cada vez que se modifica el input. v es el evento keypress (preguntar a Marcos si no se entiende)
-  changeData(v:any) {
-    this.message = v.target.value
-    this.nCaracteres = this.message.length
+  //Ejecutado cada vez que se modifica el input.
+  changeData(m:string) {
+    console.log(m)
+    this.message = m
+    this.nCaracteres = m.length
   }
 }

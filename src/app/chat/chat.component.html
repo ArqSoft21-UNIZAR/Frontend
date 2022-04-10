@@ -2,6 +2,6 @@
     [percent]="(nCaracteres/2.8)"
     [title]="nCaracteres<=280 ? nCaracteres.toString(): '280+'"
 ></circle-progress>
-<input type="text" (keypress)="changeData($event)">
+<input type="text" [ngModel]="message" (ngModelChange)="changeData($event)">
 
 <!-- https://github.com/bootsoon/ng-circle-progress/issues/88 -->
