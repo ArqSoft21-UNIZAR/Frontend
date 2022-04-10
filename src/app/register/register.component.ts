@@ -38,20 +38,8 @@ export class RegisterComponent implements OnInit {
       return;
     }
     this.passwordError = false;
-    const user = { email: this.email, 
-                   password: this.password, 
-                   nombre: this.name,
-                   apellidos: this.surname,
-                   sexo: this.gender,
-                   edad: this.age,
-                   localidad: this.provincia,
-                   tagBuenos: this.tagGood.map(str => str.toLowerCase()),
-                   tagMalos: this.tagBad.map(str => str.toLowerCase()),
-                  };
-    console.log(user)
-
     
-    this.userService.register(user).subscribe({
+    this.userService.register(this.email, this.password,this.name, this.surname, this.gender, this.age, this.provincia, this.tagGood, this.tagBad).subscribe({
       next: (v) => {
         // TODO(Marcos): Guardar con setToken algo de res para recordar que el login es correcto. Hacer set tambien de userError
         // this.userService.setToken(res.algo);

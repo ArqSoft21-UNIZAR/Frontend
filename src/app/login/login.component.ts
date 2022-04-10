@@ -21,9 +21,7 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    const user = {email: this.email, password: this.password};
-    console.log(user)
-    this.userService.login(user).subscribe({
+    this.userService.login(this.email,this.password).subscribe({
       next: (v) => {
         // TODO(Marcos): Guardar con setToken algo de res para recordar que el login es correcto. Hacer set tambien de userError
         // this.userService.setToken(res.algo);
