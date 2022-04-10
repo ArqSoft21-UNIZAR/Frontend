@@ -12,7 +12,6 @@ export class AppComponent {
   constructor(public userService: UsersService, public router: Router) { }
 
   goHome() {
-    console.log(this.userService.getToken())
     if (this.userService.getToken()=="") {
       this.router.navigateByUrl("")
     }
