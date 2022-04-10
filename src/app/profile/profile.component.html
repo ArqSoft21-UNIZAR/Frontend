@@ -2,22 +2,39 @@
     <h1>Perfil</h1>
     <!-- Perfil de otra persona -->
     <div *ngIf="this.userService.getToken() != this.profileID">
-        <div class="split left">
+      <div class="vcenter">
+
+        <div class="split">
+          <img src="assets/account-circle.png">
+        </div>
+        <div class="split">
+          <div class="default text">
             {{this.name}} {{this.surname}}
-            <br>
+          </div>
+          <br>
+          <div class="default text">
             {{this.gender}}
+          </div>
         </div>
-        <div class="split right">
+        <div class="split">
+          <div class="default text">
             {{this.age}} años
-            <br>
+          </div>
+          <br>
+          <div class="default text">
             {{this.provincia}}
+          </div>
         </div>
+      </div>
     </div>
     <!-- Tu perfil -->
     <div *ngIf="this.userService.getToken() == this.profileID">
-      <img src="assets/account-circle.png">
       <form class="custom-form" method="post">
-        <div class="center">
+        <div class="split left20">
+          <img src="assets/account-circle.png">
+        </div>
+        <div class="split right80">
+          <div class="center">
                 <input
                   type="text"
                   [(ngModel)]="name"
@@ -74,9 +91,10 @@
                   </div>
               </div>
             </div>
+          </div>
             
             <hr />
-            <div class="split">
+            <div class="split left">
               <h2>Adoro</h2>
               <br>
               <input
@@ -104,7 +122,7 @@
                 required="required"
               />
             </div>
-            <div class="split">
+            <div class="split right">
               <h2>Detesto</h2>
               <br>
               <input
