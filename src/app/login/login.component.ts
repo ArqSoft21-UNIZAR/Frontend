@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UsersService } from '../users.service';
+import { UtilityService } from '../utility.service';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,7 @@ export class LoginComponent implements OnInit {
   userError: boolean = false;
 
 
-  constructor(public userService: UsersService, public router: Router) { }
+  constructor(public userService: UsersService, public router: Router, public utilityService: UtilityService) { }
 
   ngOnInit(): void {
   }
@@ -23,10 +24,9 @@ export class LoginComponent implements OnInit {
   login() {
     this.userService.login(this.email,this.password).subscribe({
       next: (v) => {
-        // TODO(Marcos): Guardar con setToken algo de res para recordar que el login es correcto. Hacer set tambien de userError
-        // this.userService.setToken(res.algo);
+        this.userService.setToken(this.email);
         // NOTE(Marcos): Para borrar la cookie (hacer logout): this.cookies.delete("token");
-        this.router.navigateByUrl('/');
+        this.utilityService.goHome();
       },
       error: (e) => {
         console.error(e)

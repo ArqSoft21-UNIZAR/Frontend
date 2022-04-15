@@ -11,14 +11,12 @@ export class UsersService {
   constructor(private http: HttpClient, private cookies: CookieService) {}
 
   login(email:string, password:string): Observable<any> {
-    
     return this.http.post("https://localhost:7022/users/login",
-                          {email: email, password: password},
-                          {responseType: 'text'}); //Esto es temporal
+                          {email: email, password: password});
   }
 
   register(email:string, password:string, name:string, surname:string, gender:string, age:number, provincia:string, tagGood:string[], tagBad:string[]): Observable<any> {
-    return this.http.post("<DIRECCION WEB API>", //TODO
+    return this.http.post("https://localhost:7022/users/register",
                           {
                             email: email, 
                             password: password, 
@@ -29,19 +27,18 @@ export class UsersService {
                             localidad: provincia,
                             tagBuenos: tagGood.map(str => str.toLowerCase()),
                             tagMalos: tagBad.map(str => str.toLowerCase())
-                          },
-                          {responseType: 'text'}); //Esto es temporal
+                          });
   }
 
   get(email:string): Observable<any> {
-    return this.http.post("<DIRECCION WEB API>", //TODO
-                          {email: email},
-                          {responseType: 'text'}); //Esto es temporal
+    return this.http.post("https://localhost:7022/users/get",
+                          {email: email});
   }
 
-  edit(name:string, surname:string, gender:string, age:number, provincia:string, tagGood:string[], tagBad:string[]): Observable<any> {
-    return this.http.post("<DIRECCION WEB API>", //TODO
+  edit(email:string, name:string, surname:string, gender:string, age:number, provincia:string, tagGood:string[], tagBad:string[]): Observable<any> {
+    return this.http.post("https://localhost:7022/users/edit",
                           {
+                            email: email,
                             nombre: name,
                             apellidos: surname,
                             sexo: gender,
@@ -49,8 +46,7 @@ export class UsersService {
                             localidad: provincia,
                             tagBuenos: tagGood.map(str => str.toLowerCase()),
                             tagMalos: tagBad.map(str => str.toLowerCase())
-                          },
-                          {responseType: 'text'}); //Esto es temporal
+                          });
   }
 
   // Cookies
