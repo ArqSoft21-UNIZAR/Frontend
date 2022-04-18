@@ -11,46 +11,50 @@ export class UsersService {
   constructor(private http: HttpClient, private cookies: CookieService) {}
 
   login(email:string, password:string): Observable<any> {
-    
-    return this.http.post("https://localhost:7022/users/login",
-                          {email: email, password: password},
-                          {responseType: 'text'}); //Esto es temporal
+    return this.http.post("https://meetme-b.herokuapp.com/users/login",
+                          {email: email, password: password});
   }
 
-  register(email:string, password:string, name:string, surname:string, gender:string, age:number, provincia:string, tagGood:string[], tagBad:string[]): Observable<any> {
-    return this.http.post("<DIRECCION WEB API>", //TODO
+  register(email:string, password:string, name:string, surname:string, gender:string, age:number, provincia:string, meGusta1:string, meGusta2:string, meGusta3:string, noMeGusta1:string, noMeGusta2:string, noMeGusta3:string): Observable<any> {
+    return this.http.post("https://meetme-b.herokuapp.com/users/register",
                           {
-                            email: email, 
+                            email: email,
                             password: password, 
                             nombre: name,
                             apellidos: surname,
                             sexo: gender,
                             edad: age,
                             localidad: provincia,
-                            tagBuenos: tagGood.map(str => str.toLowerCase()),
-                            tagMalos: tagBad.map(str => str.toLowerCase())
-                          },
-                          {responseType: 'text'}); //Esto es temporal
+                            meGusta1: meGusta1,
+                            meGusta2: meGusta2,
+                            meGusta3: meGusta3,
+                            noMeGusta1: noMeGusta1,
+                            noMeGusta2: noMeGusta2,
+                            noMeGusta3: noMeGusta3,
+                          });
   }
 
   get(email:string): Observable<any> {
-    return this.http.post("<DIRECCION WEB API>", //TODO
-                          {email: email},
-                          {responseType: 'text'}); //Esto es temporal
+    return this.http.post("https://meetme-b.herokuapp.com/users/get",
+                          {email: email});
   }
 
-  edit(name:string, surname:string, gender:string, age:number, provincia:string, tagGood:string[], tagBad:string[]): Observable<any> {
-    return this.http.post("<DIRECCION WEB API>", //TODO
+  edit(email:string, name:string, surname:string, gender:string, age:number, provincia:string, meGusta1:string, meGusta2:string, meGusta3:string, noMeGusta1:string, noMeGusta2:string, noMeGusta3:string): Observable<any> {
+    return this.http.post("https://meetme-b.herokuapp.com/users/edit",
                           {
+                            email: email,
                             nombre: name,
                             apellidos: surname,
                             sexo: gender,
                             edad: age,
                             localidad: provincia,
-                            tagBuenos: tagGood.map(str => str.toLowerCase()),
-                            tagMalos: tagBad.map(str => str.toLowerCase())
-                          },
-                          {responseType: 'text'}); //Esto es temporal
+                            meGusta1: meGusta1,
+                            meGusta2: meGusta2,
+                            meGusta3: meGusta3,
+                            noMeGusta1: noMeGusta1,
+                            noMeGusta2: noMeGusta2,
+                            noMeGusta3: noMeGusta3,
+                          });
   }
 
   // Cookies

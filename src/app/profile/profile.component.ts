@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { UsersService } from '../users.service';
+import { UtilityService } from '../utility.service';
 
 @Component({
   selector: 'app-profile',
@@ -15,58 +16,59 @@ export class ProfileComponent implements OnInit {
   provincia: string = "";
   gender: string = "";
   age: number = 18;
-  tagGood: Array<string> = [];
-  tagBad: Array<string> = [];
+  meGusta1: string = "";
+  meGusta2: string = "";
+  meGusta3: string = "";
+  noMeGusta1: string = "";
+  noMeGusta2: string = "";
+  noMeGusta3: string = "";
   //Errores
   serviceError: boolean = false;
   serviceErrorMessage: string = "";
 
-  constructor(public userService: UsersService, public route: ActivatedRoute, public router: Router) { }
+  constructor(public userService: UsersService, public route: ActivatedRoute, public router: Router, public utilityService: UtilityService) { }
 
   ngOnInit(): void {
     this.profileID = this.route.snapshot.paramMap.get('id'); //Parametro de la url
     if (this.profileID !== null) {
       this.userService.get(this.profileID).subscribe({
         next: (v) => {
-          // TODO(Marcos): Guardar informacion de vuelta
+          console.log(v)
+          this.name = v.nombre;
+          this.surname = v.apellidos;
+          this.age = v.edad;
+          this.gender = v.sexo;
+          this.provincia = v.localidad;
+          this.meGusta1 = v.meGusta1;
+          this.meGusta2 = v.meGusta2;
+          this.meGusta3 = v.meGusta3;
+          this.noMeGusta1 = v.noMeGusta1;
+          this.noMeGusta2 = v.noMeGusta2;
+          this.noMeGusta3 = v.noMeGusta3;
         },
         error: (e) => {
-          console.error(e)
-          this.serviceError = true
-          this.serviceErrorMessage = e.message
+          this.router.navigateByUrl('/404');
         }
       });
     }
     else {
       this.router.navigateByUrl("/404")
     }
-    //Pruebas:
-    this.userService.setToken("test")
-    this.name = "Maria";
-    this.surname = "Martinez Menorca";
-    this.age = 21
-    this.provincia = "Zaragoza";
-    this.gender = "Mujer";
-    this.tagGood[0] = "Futbol"
-    this.tagBad[0] = "Basket"
   }
 
   validate() {
     return this.name == ""
     || this.surname == ""
-    || this.tagBad.every((value) => value == "")
-    || this.tagGood.every((value) => value == "")
+    || this.meGusta1 == ""
+    || this.noMeGusta1 == ""
     || this.gender == ""
     || this.provincia == ""
   }
 
   updateProfile() {
-    this.userService.edit(this.name, this.surname, this.gender, this.age, this.provincia, this.tagGood, this.tagBad).subscribe({
+    this.userService.edit(this.userService.getToken(), this.name, this.surname, this.gender, this.age, this.provincia, this.meGusta1, this.meGusta2, this.meGusta3, this.noMeGusta1, this.noMeGusta2, this.noMeGusta3).subscribe({
       next: (v) => {
-        // TODO(Marcos): Guardar con setToken algo de res para recordar que el login es correcto. Hacer set tambien de userError
-        // this.userService.setToken(res.algo);
-        // NOTE(Marcos): Para borrar la cookie (hacer logout): this.cookies.delete("token");
-        
+        this.utilityService.goHome();
       },
       error: (e) => {
         console.error(e)

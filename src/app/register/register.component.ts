@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { UsersService } from '../users.service';
+import { UtilityService } from '../utility.service';
 
 @Component({
   selector: 'app-register',
@@ -27,7 +28,7 @@ export class RegisterComponent implements OnInit {
   serviceErrorMessage: string = "";
   userError: boolean = false;
 
-  constructor(public userService: UsersService, public router: Router) { }
+  constructor(public userService: UsersService, public router: Router, public utilityService: UtilityService) { }
 
   ngOnInit(): void {
   }
@@ -39,12 +40,11 @@ export class RegisterComponent implements OnInit {
     }
     this.passwordError = false;
     
-    this.userService.register(this.email, this.password,this.name, this.surname, this.gender, this.age, this.provincia, this.tagGood, this.tagBad).subscribe({
+    this.userService.register(this.email, this.password,this.name, this.surname, this.gender, this.age, this.provincia, this.tagGood[0], this.tagGood[1], this.tagGood[2], this.tagBad[0], this.tagBad[1], this.tagBad[2]).subscribe({
       next: (v) => {
-        // TODO(Marcos): Guardar con setToken algo de res para recordar que el login es correcto. Hacer set tambien de userError
-        // this.userService.setToken(res.algo);
+        this.userService.setToken(this.email);
         // NOTE(Marcos): Para borrar la cookie (hacer logout): this.cookies.delete("token");
-        this.router.navigateByUrl('/');
+        this.utilityService.goHome();
       },
       error: (e) => {
         console.error(e)
@@ -60,8 +60,8 @@ export class RegisterComponent implements OnInit {
     || this.confirmPassword == ""
     || this.name == ""
     || this.surname == ""
-    || this.tagBad.every((value) => value == "")
-    || this.tagGood.every((value) => value == "")
+    || this.tagBad[0] == undefined
+    || this.tagGood[0] == undefined
     || this.gender == ""
     || this.provincia == ""
   }
