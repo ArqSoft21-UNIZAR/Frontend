@@ -9,6 +9,7 @@ import { UtilityService } from '../utility.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  loading: boolean = false;
   email: string = "";
   password: string = "";
   serviceError: boolean = false;
@@ -22,6 +23,7 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
+    this.loading = true;
     this.userService.login(this.email,this.password).subscribe({
       next: (v) => {
         this.userService.setToken(this.email);
@@ -29,6 +31,7 @@ export class LoginComponent implements OnInit {
         this.utilityService.goHome();
       },
       error: (e) => {
+        this.loading = false;
         console.error(e)
         this.serviceError = true
         this.serviceErrorMessage = e.message

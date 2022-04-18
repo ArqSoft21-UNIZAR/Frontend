@@ -9,6 +9,7 @@ import { UtilityService } from '../utility.service';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
+  loading: boolean = true;
   profileID: string | null = "";
   //Datos del profile
   name: string = "";
@@ -45,6 +46,7 @@ export class ProfileComponent implements OnInit {
           this.noMeGusta1 = v.noMeGusta1;
           this.noMeGusta2 = v.noMeGusta2;
           this.noMeGusta3 = v.noMeGusta3;
+          this.loading = false;
         },
         error: (e) => {
           this.router.navigateByUrl('/404');
@@ -66,11 +68,14 @@ export class ProfileComponent implements OnInit {
   }
 
   updateProfile() {
+    this.loading = true;
     this.userService.edit(this.userService.getToken(), this.name, this.surname, this.gender, this.age, this.provincia, this.meGusta1, this.meGusta2, this.meGusta3, this.noMeGusta1, this.noMeGusta2, this.noMeGusta3).subscribe({
       next: (v) => {
-        this.utilityService.goHome();
+          this.loading = false;
+          this.utilityService.goHome();
       },
       error: (e) => {
+        this.loading = false;
         console.error(e)
         this.serviceError = true
         this.serviceErrorMessage = e.message

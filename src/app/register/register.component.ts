@@ -9,6 +9,7 @@ import { UtilityService } from '../utility.service';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
+  loading: boolean = false;
   //Form
   email: string = "";
   name: string = "";
@@ -40,6 +41,7 @@ export class RegisterComponent implements OnInit {
     }
     this.passwordError = false;
     
+    this.loading = true;
     this.userService.register(this.email, this.password,this.name, this.surname, this.gender, this.age, this.provincia, this.tagGood[0], this.tagGood[1], this.tagGood[2], this.tagBad[0], this.tagBad[1], this.tagBad[2]).subscribe({
       next: (v) => {
         this.userService.setToken(this.email);
@@ -47,6 +49,7 @@ export class RegisterComponent implements OnInit {
         this.utilityService.goHome();
       },
       error: (e) => {
+        this.loading = false;
         console.error(e)
         this.serviceError = true
         this.serviceErrorMessage = e.message
