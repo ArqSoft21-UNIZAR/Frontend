@@ -99,27 +99,24 @@
               <br>
               <input
                 type="text"
-                [(ngModel)]="tagGood[0]"
-                name="tagGood0"
+                [(ngModel)]="meGusta1"
+                name="meGusta0"
                 class="tag"
                 placeholder="Musica..."
-                required="required"
               />
               <input
                 type="text"
-                [(ngModel)]="tagGood[1]"
-                name="tagGood1"
+                [(ngModel)]="meGusta2"
+                name="meGusta1"
                 class="tag"
                 placeholder="Deporte..."
-                required="required"
               />
               <input
                 type="text"
-                [(ngModel)]="tagGood[2]"
-                name="tagGood2"
+                [(ngModel)]="meGusta3"
+                name="meGusta2"
                 class="tag"
                 placeholder="Arte..."
-                required="required"
               />
             </div>
             <div class="split right">
@@ -127,27 +124,24 @@
               <br>
               <input
                 type="text"
-                [(ngModel)]="tagBad[0]"
-                name="tagBad0"
+                [(ngModel)]="noMeGusta1"
+                name="noMeGusta0"
                 class="tag"
                 placeholder="Arañas..."
-                required="required"
               />
               <input
                 type="text"
-                [(ngModel)]="tagBad[1]"
-                name="tagBad1"
+                [(ngModel)]="noMeGusta2"
+                name="noMeGusta1"
                 class="tag"
                 placeholder="Roncola..."
-                required="required"
               />
               <input
                 type="text"
-                [(ngModel)]="tagBad[2]"
-                name="tagBad2"
+                [(ngModel)]="noMeGusta3"
+                name="noMeGusta2"
                 class="tag"
                 placeholder="Justin Bieber..."
-                required="required"
               />
             </div>
             <button type="submit" class="update red" [disabled]="validate()" (click)="updateProfile()">Actualizar perfil</button>

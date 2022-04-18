@@ -16,8 +16,12 @@ export class ProfileComponent implements OnInit {
   provincia: string = "";
   gender: string = "";
   age: number = 18;
-  tagGood: Array<string> = [];
-  tagBad: Array<string> = [];
+  meGusta1: string = "";
+  meGusta2: string = "";
+  meGusta3: string = "";
+  noMeGusta1: string = "";
+  noMeGusta2: string = "";
+  noMeGusta3: string = "";
   //Errores
   serviceError: boolean = false;
   serviceErrorMessage: string = "";
@@ -26,18 +30,21 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.profileID = this.route.snapshot.paramMap.get('id'); //Parametro de la url
-    console.log(this.userService.getToken()," ", this.profileID)
     if (this.profileID !== null) {
       this.userService.get(this.profileID).subscribe({
         next: (v) => {
-          console.log(v);
+          console.log(v)
           this.name = v.nombre;
           this.surname = v.apellidos;
           this.age = v.edad;
           this.gender = v.sexo;
           this.provincia = v.localidad;
-          this.tagGood = new Array<string>(v.meGusta1, v.meGusta2, v.meGusta3)
-          this.tagBad = new Array<string>(v.noMeGusta1, v.noMeGusta2, v.noMeGusta3)
+          this.meGusta1 = v.meGusta1;
+          this.meGusta2 = v.meGusta2;
+          this.meGusta3 = v.meGusta3;
+          this.noMeGusta1 = v.noMeGusta1;
+          this.noMeGusta2 = v.noMeGusta2;
+          this.noMeGusta3 = v.noMeGusta3;
         },
         error: (e) => {
           this.router.navigateByUrl('/404');
@@ -52,14 +59,14 @@ export class ProfileComponent implements OnInit {
   validate() {
     return this.name == ""
     || this.surname == ""
-    || this.tagBad[0] == undefined
-    || this.tagGood[0] == undefined
+    || this.meGusta1 == ""
+    || this.noMeGusta1 == ""
     || this.gender == ""
     || this.provincia == ""
   }
 
   updateProfile() {
-    this.userService.edit(this.userService.getToken(),this.name, this.surname, this.gender, this.age, this.provincia, this.tagGood, this.tagBad).subscribe({
+    this.userService.edit(this.userService.getToken(), this.name, this.surname, this.gender, this.age, this.provincia, this.meGusta1, this.meGusta2, this.meGusta3, this.noMeGusta1, this.noMeGusta2, this.noMeGusta3).subscribe({
       next: (v) => {
         this.utilityService.goHome();
       },
