@@ -1,0 +1,16 @@
+img.profile {
+  width: 110px;
+  height: 110px;
+  position: absolute;
+  top: 0;
+  right: 3%;
+  cursor: pointer;
+}
+
+button.soliChat {
+  padding: 1ch 2ch 1ch 2ch;
+  position: absolute;
+  top: 55px;
+  left: 9%;
+  transform: translate(-50%, -50%);
+}
