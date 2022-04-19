@@ -37,7 +37,7 @@ export class ProfileComponent implements OnInit {
           console.log(v)
           this.name = v.nombre;
           this.surname = v.apellidos;
-          this.age = v.edad;
+          this.age = Math.floor(-(Date.parse(v.fNacimiento)-Date.parse(Date()))/31557600000);
           this.gender = v.sexo;
           this.provincia = v.localidad;
           this.meGusta1 = v.meGusta1;
@@ -49,6 +49,7 @@ export class ProfileComponent implements OnInit {
           this.loading = false;
         },
         error: (e) => {
+          console.error(e);
           this.router.navigateByUrl('/404');
         }
       });
