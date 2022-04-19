@@ -133,6 +133,8 @@ button.red {
   border-width: 5px;
   border-style: solid;
   border-radius: 30px 30px 30px 30px;
+  transform: scale(1);
+  transform-origin: center;
 }
 
 button.white {
@@ -142,10 +144,12 @@ button.white {
   border-width: 5px;
   border-style: solid;
   border-radius: 30px 30px 30px 30px;
+  transform: scale(1);
+  transform-origin: center;
 }
 
-button:hover{
-  font-size: 20px;
+button:enabled:hover{
+  transform: scale(1.1);
 }
 
 button:disabled{

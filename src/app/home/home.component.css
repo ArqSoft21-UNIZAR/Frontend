@@ -10,7 +10,6 @@ img.profile {
 button.soliChat {
   padding: 1ch 2ch 1ch 2ch;
   position: absolute;
-  top: 55px;
-  left: 9%;
-  transform: translate(-50%, -50%);
+  top: 30px;
+  left: 3%;
 }
