@@ -15,7 +15,22 @@ export class UsersService {
                           {email: email, password: password});
   }
 
-  register(email:string, password:string, name:string, surname:string, gender:string, age:number, provincia:string, meGusta1:string, meGusta2:string, meGusta3:string, noMeGusta1:string, noMeGusta2:string, noMeGusta3:string): Observable<any> {
+  register(email:string, password:string, name:string, surname:string, gender:string, age:Date, provincia:string, meGusta1:string, meGusta2:string, meGusta3:string, noMeGusta1:string, noMeGusta2:string, noMeGusta3:string): Observable<any> {
+    console.log({
+      email: email,
+      password: password, 
+      nombre: name,
+      apellidos: surname,
+      sexo: gender,
+      fNacimiento: age,
+      localidad: provincia,
+      meGusta1: meGusta1,
+      meGusta2: (meGusta2 != undefined ? meGusta2 :""),
+      meGusta3: (meGusta3 != undefined ? meGusta3 :""),
+      noMeGusta1: noMeGusta1,
+      noMeGusta2: (noMeGusta2 != undefined ? noMeGusta2 :""),
+      noMeGusta3: (noMeGusta3 != undefined ? noMeGusta3 :""),
+    });
     return this.http.post("https://meetme-b.herokuapp.com/users/register",
                           {
                             email: email,
@@ -23,20 +38,32 @@ export class UsersService {
                             nombre: name,
                             apellidos: surname,
                             sexo: gender,
-                            edad: age,
+                            fNacimiento: age,
                             localidad: provincia,
                             meGusta1: meGusta1,
-                            meGusta2: meGusta2,
-                            meGusta3: meGusta3,
+                            meGusta2: (meGusta2 != undefined ? meGusta2 :""),
+                            meGusta3: (meGusta3 != undefined ? meGusta3 :""),
                             noMeGusta1: noMeGusta1,
-                            noMeGusta2: noMeGusta2,
-                            noMeGusta3: noMeGusta3,
+                            noMeGusta2: (noMeGusta2 != undefined ? noMeGusta2 :""),
+                            noMeGusta3: (noMeGusta3 != undefined ? noMeGusta3 :""),
                           });
   }
 
   get(email:string): Observable<any> {
     return this.http.post("https://meetme-b.herokuapp.com/users/get",
-                          {email: email});
+                          { email: email,
+                            apellidos: "",
+                            localidad: "",
+                            sexo: "",
+                            nombre: "",
+                            password: "",
+                            meGusta1: "",
+                            meGusta2: "",
+                            meGusta3: "",
+                            noMeGusta1: "",
+                            noMeGusta2: "",
+                            noMeGusta3: "",
+                          });
   }
 
   edit(email:string, name:string, surname:string, gender:string, age:number, provincia:string, meGusta1:string, meGusta2:string, meGusta3:string, noMeGusta1:string, noMeGusta2:string, noMeGusta3:string): Observable<any> {
@@ -46,14 +73,14 @@ export class UsersService {
                             nombre: name,
                             apellidos: surname,
                             sexo: gender,
-                            edad: age,
+                            fNacimiento: age,
                             localidad: provincia,
                             meGusta1: meGusta1,
-                            meGusta2: meGusta2,
-                            meGusta3: meGusta3,
+                            meGusta2: (meGusta2 != undefined ? meGusta2 :""),
+                            meGusta3: (meGusta3 != undefined ? meGusta3 :""),
                             noMeGusta1: noMeGusta1,
-                            noMeGusta2: noMeGusta2,
-                            noMeGusta3: noMeGusta3,
+                            noMeGusta2: (noMeGusta2 != undefined ? noMeGusta2 :""),
+                            noMeGusta3: (noMeGusta3 != undefined ? noMeGusta3 :""),
                           });
   }
 

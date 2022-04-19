@@ -1,3 +1,6 @@
+<div class="loading" *ngIf="loading">
+  <div class="ring"></div>
+</div>
 <div class="default register">
   <form class="custom-form" method="post">
     <h1>Registrarse</h1>
@@ -22,12 +25,10 @@
         <div class="group">
           <label for="age">Edad:</label>
           <input
-            type="number"
-            [(ngModel)]="age"
-            name="age"
-            class="age"
-            min="18"
-            max="99"
+            type="date"
+            [(ngModel)]="fnacimiento"
+            name="fnacimiento"
+            class="fnacimiento"
             required="required"
           />
         </div>

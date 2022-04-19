@@ -1,3 +1,6 @@
+<div class="loading" *ngIf="loading">
+  <div class="ring"></div>
+</div>
 <div class="default profile">
     <h1>Perfil</h1>
     <!-- Perfil de otra persona -->
@@ -67,16 +70,7 @@
             <div class="center">
               <div class="group">
                 <div class="group">
-                  <label for="age">Edad:</label>
-                  <input
-                    type="number"
-                    [(ngModel)]="age"
-                    name="age"
-                    class="age"
-                    min="18"
-                    max="99"
-                    required="required"
-                  />
+                  <label for="age">Edad: {{this.age}}</label>
                 </div>
                 <div class="group">
                     <label for="provincia">Provincia:</label>
