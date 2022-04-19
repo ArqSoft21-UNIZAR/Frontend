@@ -64,20 +64,33 @@ export class UsersService {
   }
 
   edit(email:string, name:string, surname:string, gender:string, age:number, provincia:string, meGusta1:string, meGusta2:string, meGusta3:string, noMeGusta1:string, noMeGusta2:string, noMeGusta3:string): Observable<any> {
+    console.log( {
+      email: email,
+      nombre: name,
+      apellidos: surname,
+      sexo: gender,
+      localidad: provincia,
+      meGusta1: meGusta1,
+      meGusta2: (meGusta2 != undefined ? meGusta2 : ""),
+      meGusta3: (meGusta3 != undefined ? meGusta3 : ""),
+      noMeGusta1: noMeGusta1,
+      noMeGusta2: (noMeGusta2 != undefined ? noMeGusta2 : ""),
+      noMeGusta3: (noMeGusta3 != undefined ? noMeGusta3 : ""),
+    });
     return this.http.post("https://meetme-b.herokuapp.com/users/edit",
                           {
                             email: email,
+                            password: "",
                             nombre: name,
                             apellidos: surname,
                             sexo: gender,
-                            fNacimiento: age,
                             localidad: provincia,
                             meGusta1: meGusta1,
-                            meGusta2: (meGusta2 != undefined ? meGusta2 :""),
-                            meGusta3: (meGusta3 != undefined ? meGusta3 :""),
+                            meGusta2: (meGusta2 != undefined ? meGusta2 : ""),
+                            meGusta3: (meGusta3 != undefined ? meGusta3 : ""),
                             noMeGusta1: noMeGusta1,
-                            noMeGusta2: (noMeGusta2 != undefined ? noMeGusta2 :""),
-                            noMeGusta3: (noMeGusta3 != undefined ? noMeGusta3 :""),
+                            noMeGusta2: (noMeGusta2 != undefined ? noMeGusta2 : ""),
+                            noMeGusta3: (noMeGusta3 != undefined ? noMeGusta3 : ""),
                           });
   }
 
