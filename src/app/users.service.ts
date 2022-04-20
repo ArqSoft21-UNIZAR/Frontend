@@ -11,7 +11,7 @@ export class UsersService {
   constructor(private http: HttpClient, private cookies: CookieService) {}
 
   login(email:string, password:string): Observable<any> {
-    return this.http.post("https://localhost:7022/users/login",
+    return this.http.post("https://meetme-b.herokuapp.com/users/login",
                           { email: email,
                             password: password,
                             apellidos: "",
@@ -28,7 +28,22 @@ export class UsersService {
   }
 
   register(email:string, password:string, name:string, surname:string, gender:string, age:Date, provincia:string, meGusta1:string, meGusta2:string, meGusta3:string, noMeGusta1:string, noMeGusta2:string, noMeGusta3:string): Observable<any> {
-    return this.http.post("https://localhost:7022/users/register",
+    console.log({
+      email: email,
+      password: password, 
+      nombre: name,
+      apellidos: surname,
+      sexo: gender,
+      fNacimiento: age,
+      localidad: provincia,
+      meGusta1: meGusta1,
+      meGusta2: (meGusta2 != undefined ? meGusta2 :""),
+      meGusta3: (meGusta3 != undefined ? meGusta3 :""),
+      noMeGusta1: noMeGusta1,
+      noMeGusta2: (noMeGusta2 != undefined ? noMeGusta2 :""),
+      noMeGusta3: (noMeGusta3 != undefined ? noMeGusta3 :""),
+    })
+    return this.http.post("https://meetme-b.herokuapp.com/users/register",
                           {
                             email: email,
                             password: password, 
@@ -47,7 +62,7 @@ export class UsersService {
   }
 
   get(email:string): Observable<any> {
-    return this.http.post("https://localhost:7022/users/get",
+    return this.http.post("https://meetme-b.herokuapp.com/users/get",
                           { email: email,
                             apellidos: "",
                             localidad: "",
@@ -77,7 +92,7 @@ export class UsersService {
       noMeGusta2: (noMeGusta2 != undefined ? noMeGusta2 : ""),
       noMeGusta3: (noMeGusta3 != undefined ? noMeGusta3 : ""),
     });
-    return this.http.post("https://localhost:7022/users/edit",
+    return this.http.post("https://meetme-b.herokuapp.com/users/edit",
                           {
                             email: email,
                             password: "",
