@@ -33,8 +33,14 @@ export class LoginComponent implements OnInit {
       error: (e) => {
         this.loading = false;
         console.error(e)
-        this.serviceError = true
-        this.serviceErrorMessage = e.message
+        if (e.error.code == 1 || e.error.code == 2){
+          this.userError = true
+          this.serviceErrorMessage = e.error.message
+        }
+        else {
+          this.serviceError = true
+          this.serviceErrorMessage = e.message
+        }
       }
     });
   }

@@ -11,7 +11,7 @@ export class UsersService {
   constructor(private http: HttpClient, private cookies: CookieService) {}
 
   login(email:string, password:string): Observable<any> {
-    return this.http.post("https://meetme-b.herokuapp.com/users/login",
+    return this.http.post("https://localhost:7022/users/login",
                           { email: email,
                             password: password,
                             apellidos: "",
@@ -28,7 +28,7 @@ export class UsersService {
   }
 
   register(email:string, password:string, name:string, surname:string, gender:string, age:Date, provincia:string, meGusta1:string, meGusta2:string, meGusta3:string, noMeGusta1:string, noMeGusta2:string, noMeGusta3:string): Observable<any> {
-    return this.http.post("https://meetme-b.herokuapp.com/users/register",
+    return this.http.post("https://localhost:7022/users/register",
                           {
                             email: email,
                             password: password, 
@@ -47,7 +47,7 @@ export class UsersService {
   }
 
   get(email:string): Observable<any> {
-    return this.http.post("https://meetme-b.herokuapp.com/users/get",
+    return this.http.post("https://localhost:7022/users/get",
                           { email: email,
                             apellidos: "",
                             localidad: "",
@@ -63,7 +63,7 @@ export class UsersService {
                           });
   }
 
-  edit(email:string, name:string, surname:string, gender:string, age:number, provincia:string, meGusta1:string, meGusta2:string, meGusta3:string, noMeGusta1:string, noMeGusta2:string, noMeGusta3:string): Observable<any> {
+  edit(email:string, name:string, surname:string, gender:string, provincia:string, meGusta1:string, meGusta2:string, meGusta3:string, noMeGusta1:string, noMeGusta2:string, noMeGusta3:string): Observable<any> {
     console.log( {
       email: email,
       nombre: name,
@@ -77,7 +77,7 @@ export class UsersService {
       noMeGusta2: (noMeGusta2 != undefined ? noMeGusta2 : ""),
       noMeGusta3: (noMeGusta3 != undefined ? noMeGusta3 : ""),
     });
-    return this.http.post("https://meetme-b.herokuapp.com/users/edit",
+    return this.http.post("https://localhost:7022/users/edit",
                           {
                             email: email,
                             password: "",
@@ -101,5 +101,9 @@ export class UsersService {
 
   getToken() {
     return this.cookies.get("tokenMeetMe");
+  }
+
+  deleteToken() {
+    this.cookies.delete("tokenMeetMe");
   }
 }
