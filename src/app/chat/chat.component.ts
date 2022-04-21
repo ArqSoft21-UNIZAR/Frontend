@@ -1,4 +1,5 @@
 import { Component, NgModule, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Message } from '../message';
 import { UsersService } from '../users.service';
 
@@ -9,14 +10,30 @@ import { UsersService } from '../users.service';
 })
 
 export class ChatComponent implements OnInit {
+  loading: boolean = true;
+  profileID!: string | null;
+  name: string = "";
   nCaracteres: number = 0;
-  message: string = ""
+  nMensajes: number = 0;
+  message: string = "";
   history: Message[] = [];
   tempMessage: Message = new Message();
 
-  constructor(public userService: UsersService) { }
+  constructor(public userService: UsersService, public route: ActivatedRoute, public router: Router) { }
 
   ngOnInit(): void {
+    this.profileID = this.route.snapshot.paramMap.get('id'); //Parametro de la url
+    //TODO: Hacer request de los mensajes, parsear y actualizar la variable nMensajes
+    if (this.profileID == null) { this.router.navigateByUrl("/404"); return;  }
+    this.userService.get(this.profileID).subscribe({
+      next: (v) => {
+        this.loading = false;
+        this.name = v.nombre + " " + v.apellidos
+      },
+      error: (e) => {
+        this.router.navigateByUrl("/404");
+      }
+    });
     //Pruebas
     this.tempMessage = new Message();
     this.tempMessage.clientuniqueid = this.userService.getToken();
@@ -35,7 +52,7 @@ export class ChatComponent implements OnInit {
 
   //Ejecutado cuando el usuario quiere enviar el mensaje (enter o boton de enviar)
   send() {
-    if(this.message != "") {
+    if(this.message != "" && this.nCaracteres<=280 && this.nMensajes<50) {
       //Create message
       this.tempMessage = new Message();
       this.tempMessage.clientuniqueid = this.userService.getToken();
@@ -55,10 +72,12 @@ export class ChatComponent implements OnInit {
 
 
 
-      
+
       //Clear message displayed
       this.message = "";
       this.nCaracteres = this.message.length;
+      //Update messages left
+      this.nMensajes += 1;
     }
   }
 }
