@@ -116,8 +116,8 @@ button {
   margin-left: auto;
   margin-right: auto;
 
-  font-family: "Helvetica";
-  font-weight: bold;
+  font-family: "Helvetica" !important;
+  font-weight: bold !important;
   font-size: 18px;
   line-height: 1.3;
   text-align: center;
@@ -132,7 +132,7 @@ button.red {
   border-color: black;
   border-width: 5px;
   border-style: solid;
-  border-radius: 30px 30px 30px 30px;
+  border-radius: 30px 30px 30px 30px !important;
   transform: scale(1);
   transform-origin: center;
 }
@@ -143,7 +143,7 @@ button.white {
   border-color: black;
   border-width: 5px;
   border-style: solid;
-  border-radius: 30px 30px 30px 30px;
+  border-radius: 30px 30px 30px 30px !important;
   transform: scale(1);
   transform-origin: center;
 }
@@ -210,5 +210,13 @@ hr {
     transform: rotate(360deg);
   }
 }
+
+/*-------------------------- ANGULAR MATERIAL --------------------------*/
+.mat-dialog-container {
+  box-shadow: none;
+  background-color: ghostwhite !important;
+  padding: 48px !important;
+}
+
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

@@ -1,7 +1,32 @@
-import { Component, NgModule, OnInit } from '@angular/core';
+import { Component, Inject, NgModule, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Message } from '../message';
 import { UsersService } from '../users.service';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+
+export interface CitaPopupData {
+  destinatario: string;
+}
+
+@Component({
+  selector: 'cita-popup',
+  templateUrl: 'cita-popup.component.html',
+  styleUrls: ['cita-popup.component.css']
+})
+export class CitaPopup {
+  constructor(public dialogRef: MatDialogRef<CitaPopup>, public router: Router, @Inject(MAT_DIALOG_DATA) public data: CitaPopupData) {}
+  
+  noCita(): void {
+    //TODO: Hacer desmatch con la persona
+    this.router.navigateByUrl("/home");
+    this.dialogRef.close();
+  }
+
+  siCita(): void {
+    this.router.navigateByUrl("/cita/"+this.data.destinatario);
+    this.dialogRef.close();
+  }
+}
 
 @Component({
   selector: 'app-chat',
@@ -19,7 +44,7 @@ export class ChatComponent implements OnInit {
   history: Message[] = [];
   tempMessage: Message = new Message();
 
-  constructor(public userService: UsersService, public route: ActivatedRoute, public router: Router) { }
+  constructor(public dialog: MatDialog, public userService: UsersService, public route: ActivatedRoute, public router: Router) { }
 
   ngOnInit(): void {
     this.profileID = this.route.snapshot.paramMap.get('id'); //Parametro de la url
@@ -78,6 +103,20 @@ export class ChatComponent implements OnInit {
       this.nCaracteres = this.message.length;
       //Update messages left
       this.nMensajes += 1;
+      if (this.nMensajes == 50) {
+        this.openPopupCita();
+      }
     }
+  }
+
+  openPopupCita(): void {
+    const dialogRef = this.dialog.open(CitaPopup, {
+        panelClass: 'default',
+        data: {destinatario: this.profileID}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed with result: '+result);
+    });
   }
 }

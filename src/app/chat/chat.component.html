@@ -6,7 +6,9 @@
     <img class="profileimg" src="assets/perfil.png">
     {{name}}
 </div>
-<div class="mLeft">x <div class="mWrap">{{50-nMensajes}}</div></div>
+
+<div class="mLeft" *ngIf="this.nMensajes < 50">x <div class="mWrap">{{50-nMensajes}}</div></div>
+<button class="buttonCita white" *ngIf="this.nMensajes >= 50" (click)="this.openPopupCita()">Conceder cita</button>
 <div class="chat">
     <div class="area">
         <div *ngFor="let item of history" [ngClass]="'message ' + (item.isSent ? 'sent' : 'recieved')">

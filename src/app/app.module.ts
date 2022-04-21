@@ -12,7 +12,7 @@ import { HomeComponent } from './home/home.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { LandingComponent } from './landing/landing.component';
 import { ProfileComponent } from './profile/profile.component';
-import { ChatComponent } from './chat/chat.component';
+import { ChatComponent, CitaPopup } from './chat/chat.component';
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularMaterialModule } from './angular-material.module';
@@ -26,7 +26,8 @@ import { AngularMaterialModule } from './angular-material.module';
     PageNotFoundComponent,
     LandingComponent,
     ProfileComponent,
-    ChatComponent
+    ChatComponent,
+    CitaPopup
   ],
   imports: [
     BrowserModule,
