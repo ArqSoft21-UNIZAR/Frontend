@@ -14,6 +14,8 @@ import { LandingComponent } from './landing/landing.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ChatComponent } from './chat/chat.component';
 import { NgCircleProgressModule } from 'ng-circle-progress';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AngularMaterialModule } from './angular-material.module';
 
 @NgModule({
   declarations: [
@@ -44,7 +46,9 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
       animation: false,
       lazy : false,
       clockwise: false,
-    })
+    }),
+    BrowserAnimationsModule,
+    AngularMaterialModule,
   ],
   providers: [CookieService],
   bootstrap: [AppComponent]
