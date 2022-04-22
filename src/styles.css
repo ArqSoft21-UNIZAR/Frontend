@@ -72,7 +72,7 @@ label, div.text, div.message {
 }
 
 /*-------------------------- INPUT --------------------------*/
-input {
+input, textarea {
   padding: 8px 8px 8px 8px;
 
   margin-top: 1em;

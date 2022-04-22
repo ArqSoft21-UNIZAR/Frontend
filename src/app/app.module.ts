@@ -16,6 +16,7 @@ import { ChatComponent, CitaPopup } from './chat/chat.component';
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularMaterialModule } from './angular-material.module';
+import { CitaComponent } from './cita/cita.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { AngularMaterialModule } from './angular-material.module';
     LandingComponent,
     ProfileComponent,
     ChatComponent,
-    CitaPopup
+    CitaPopup,
+    CitaComponent
   ],
   imports: [
     BrowserModule,
