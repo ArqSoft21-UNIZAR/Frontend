@@ -70,7 +70,7 @@ export class ProfileComponent implements OnInit {
 
   updateProfile() {
     this.loading = true;
-    this.userService.edit(this.userService.getToken(), this.name, this.surname, this.gender, this.age, this.provincia, this.meGusta1, this.meGusta2, this.meGusta3, this.noMeGusta1, this.noMeGusta2, this.noMeGusta3).subscribe({
+    this.userService.edit(this.userService.getToken(), this.name, this.surname, this.gender, this.provincia, this.meGusta1, this.meGusta2, this.meGusta3, this.noMeGusta1, this.noMeGusta2, this.noMeGusta3).subscribe({
       next: (v) => {
           this.loading = false;
           this.utilityService.goHome();

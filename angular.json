@@ -1,5 +1,8 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": "a2216a35-3df3-4696-b973-2ccb81ac7b97"
+  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
@@ -27,7 +30,9 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/meetme-theme.scss",
+              "src/styles.css",
+              "node_modules/ol/ol.css"
             ],
             "scripts": []
           },

@@ -1,0 +1,12 @@
+<h1>¡Cuidado!</h1>
+<div mat-dialog-content>
+  <p>
+    
+    Si cancelas la cita <b>NO podras volver a concertar 
+    una nueva</b> con este usuario
+  </p>
+</div>
+<div mat-dialog-actions class="center">
+  <button mat-button class="dialogbuttons leftbutton red" (click)="this.noCita()">Eliminar contacto</button>
+  <button mat-button class="dialogbuttons rightbutton white" (click)="this.siCita()">Seguir con la cita</button>
+</div>

@@ -1,3 +1,14 @@
+<div class="loading" *ngIf="loading">
+    <div class="ring"></div>
+  </div>
+<img class="back" [routerLink]="'/home'" src="assets/back.png">
+<div class="profile" [routerLink]="'/profile/'+this.profileID">
+    <img class="profileimg" src="assets/perfil.png">
+    {{name}}
+</div>
+
+<div class="mLeft" *ngIf="this.nMensajes < 50">x <div class="mWrap">{{50-nMensajes}}</div></div>
+<button class="buttonCita white" *ngIf="this.nMensajes >= 50" (click)="this.openPopupCita()">Conceder cita</button>
 <div class="chat">
     <div class="area">
         <div *ngFor="let item of history" [ngClass]="'message ' + (item.isSent ? 'sent' : 'recieved')">
@@ -8,9 +19,9 @@
         <input type="text" [ngModel]="message" (keydown.enter)="send()" (ngModelChange)="changeData($event)" placeholder="Se tu mismo...">
         <circle-progress
             [percent]="100-(nCaracteres/2.8)"
-            [title]="nCaracteres<=280 ? (280-nCaracteres).toString(): '0'"
+            [title]="nCaracteres<=280 ? (280-nCaracteres).toString(): 'x'"
         ></circle-progress>
-        <img src="assets/send.png" (click)="send()">
+        <img class="send" src="assets/send.png" (click)="send()">
     </div>
 </div>
 
