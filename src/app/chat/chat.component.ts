@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Message } from '../message';
 import { UsersService } from '../users.service';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { UtilityService } from '../utility.service';
 
 export interface CitaPopupData {
   destinatario: string;
@@ -14,10 +15,11 @@ export interface CitaPopupData {
   styleUrls: ['cita-popup.component.css']
 })
 export class CitaPopup {
-  constructor(public dialogRef: MatDialogRef<CitaPopup>, public router: Router, @Inject(MAT_DIALOG_DATA) public data: CitaPopupData) {}
+  constructor(public dialogRef: MatDialogRef<CitaPopup>, public router: Router, public UtilityService: UtilityService, @Inject(MAT_DIALOG_DATA) public data: CitaPopupData) {}
   
   noCita(): void {
     //TODO: Hacer desmatch con la persona
+    this.UtilityService.openSnack("Contacto eliminado")
     this.router.navigateByUrl("/home");
     this.dialogRef.close();
   }
