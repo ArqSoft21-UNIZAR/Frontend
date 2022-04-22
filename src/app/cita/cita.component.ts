@@ -1,14 +1,13 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
+import * as olProj from 'ol/proj';
 import Map from 'ol/Map';
 import View from 'ol/View';
 import OSM from 'ol/source/OSM';
 import VectorLayer from 'ol/layer/Vector';
-import * as olProj from 'ol/proj';
 import TileLayer from 'ol/layer/Tile';
-import { toStringXY, createStringXY } from 'ol/coordinate';
-import VectorSource from 'ol/source/Vector';
+import VectorSource  from 'ol/source/Vector';
 import { Feature } from 'ol';
 import { Geometry, Point } from 'ol/geom';
 import Icon from 'ol/style/Icon';
