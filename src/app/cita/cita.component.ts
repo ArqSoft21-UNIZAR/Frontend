@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import Map from 'ol/Map';
@@ -14,6 +14,31 @@ import { Geometry, Point } from 'ol/geom';
 import Icon from 'ol/style/Icon';
 import Style from 'ol/style/Style';
 import { UtilityService } from '../utility.service';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+
+export interface CancelCitaPopupData {
+  destinatario: string;
+}
+
+@Component({
+  selector: 'cita-popup',
+  templateUrl: 'cancel-cita-popup.component.html',
+  styleUrls: ['cancel-cita-popup.component.css']
+})
+export class CancelCitaPopup {
+  constructor(public dialogRef: MatDialogRef<CancelCitaPopup>, public router: Router, public UtilityService: UtilityService, @Inject(MAT_DIALOG_DATA) public data: CancelCitaPopupData) {}
+  
+  noCita(): void {
+    //TODO: Hacer desmatch con la persona
+    this.UtilityService.openSnack("Contacto eliminado")
+    this.router.navigateByUrl("/home");
+    this.dialogRef.close();
+  }
+
+  siCita(): void {
+    this.dialogRef.close();
+  }
+}
 
 @Component({
   selector: 'app-cita',
@@ -32,7 +57,7 @@ export class CitaComponent implements OnInit {
   l!: VectorLayer<VectorSource<Geometry>>;
   projBuena!: olProj.Projection | null;
 
-  constructor(public route: ActivatedRoute, public router: Router, public UtilityService: UtilityService) { }
+  constructor(public dialog: MatDialog, public route: ActivatedRoute, public router: Router, public UtilityService: UtilityService) { }
 
   ngOnInit(): void {
     this.projBuena = olProj.get('EPSG:3857');
@@ -86,4 +111,15 @@ export class CitaComponent implements OnInit {
     // if(this.map.hasFeatureAtPixel(this.map.getPixelFromCoordinate(coordinate)) === true)
   }
 
+  openPopupCita(): void {
+    const dialogRef = this.dialog.open(CancelCitaPopup, {
+        width: "50%",
+        panelClass: 'default',
+        data: {destinatario: this.profileID},
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed with result: '+result);
+    });
+  }
 }
