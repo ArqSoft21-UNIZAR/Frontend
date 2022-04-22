@@ -13,6 +13,7 @@ import { Feature } from 'ol';
 import { Geometry, Point } from 'ol/geom';
 import Icon from 'ol/style/Icon';
 import Style from 'ol/style/Style';
+import { UtilityService } from '../utility.service';
 
 @Component({
   selector: 'app-cita',
@@ -31,7 +32,7 @@ export class CitaComponent implements OnInit {
   l!: VectorLayer<VectorSource<Geometry>>;
   projBuena!: olProj.Projection | null;
 
-  constructor(public route: ActivatedRoute, public router: Router) { }
+  constructor(public route: ActivatedRoute, public router: Router, public UtilityService: UtilityService) { }
 
   ngOnInit(): void {
     this.projBuena = olProj.get('EPSG:3857');

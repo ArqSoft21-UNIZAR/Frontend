@@ -28,10 +28,10 @@
         </div>
     </form>
     <div class="split left" id="botones">
-        <button class="white cancelar respuesta">Cancelar cita 💔</button>
+        <button class="white cancelar respuesta" (click)="this.UtilityService.openSnack('Prueba cancelado');">Cancelar cita 💔</button>
     </div>
     <div class="split right" id="botones">
-        <button clasS="red enviar respuesta">Enviar propuesta 💌</button>
+        <button class="red enviar respuesta" (click)="this.UtilityService.openSnack('Prueba aceptado');">Enviar propuesta 💌</button>
     </div>
 
 </div>
