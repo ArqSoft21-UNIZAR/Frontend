@@ -23,7 +23,7 @@ export class ChatService {
   
   private createConnection() {  
     this._hubConnection = new HubConnectionBuilder()  
-      .withUrl('https://localhost:7022/MessageHub')  
+      .withUrl('https://meetme-arqsoft.herokuapp.com/MessageHub')  
       .build();
   }  
   

@@ -11,7 +11,7 @@ export class UsersService {
   constructor(private http: HttpClient, private cookies: CookieService) {}
 
   login(email:string, password:string): Observable<any> {
-    return this.http.post("https://localhost:7022/users/login",
+    return this.http.post("https://meetme-arqsoft.herokuapp.com/users/login",
                           { email: email,
                             password: password,
                             apellidos: "",
@@ -43,7 +43,7 @@ export class UsersService {
       noMeGusta2: (noMeGusta2 != undefined ? noMeGusta2 :""),
       noMeGusta3: (noMeGusta3 != undefined ? noMeGusta3 :""),
     })
-    return this.http.post("https://localhost:7022/users/register",
+    return this.http.post("https://meetme-arqsoft.herokuapp.com/users/register",
                           {
                             email: email,
                             password: password, 
@@ -62,7 +62,7 @@ export class UsersService {
   }
 
   get(email:string): Observable<any> {
-    return this.http.post("https://localhost:7022/users/get",
+    return this.http.post("https://meetme-arqsoft.herokuapp.com/users/get",
                           { email: email,
                             apellidos: "",
                             localidad: "",
@@ -92,7 +92,7 @@ export class UsersService {
       noMeGusta2: (noMeGusta2 != undefined ? noMeGusta2 : ""),
       noMeGusta3: (noMeGusta3 != undefined ? noMeGusta3 : ""),
     });
-    return this.http.post("https://localhost:7022/users/edit",
+    return this.http.post("https://meetme-arqsoft.herokuapp.com/users/edit",
                           {
                             email: email,
                             password: "",
