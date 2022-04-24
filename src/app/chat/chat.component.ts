@@ -1,9 +1,10 @@
-import { Component, Inject, NgModule, OnInit } from '@angular/core';
+import { Component, Inject, NgModule, NgZone, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Message } from '../message';
 import { UsersService } from '../users.service';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { UtilityService } from '../utility.service';
+import { ChatService } from '../chat.service';
 
 export interface CitaPopupData {
   destinatario: string;
@@ -33,7 +34,8 @@ export class CitaPopup {
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',
-  styleUrls: ['./chat.component.css']
+  styleUrls: ['./chat.component.css'],
+  providers: [ChatService]
 })
 
 export class ChatComponent implements OnInit {
@@ -44,14 +46,14 @@ export class ChatComponent implements OnInit {
   nMensajes: number = 0;
   message: string = "";
   history: Message[] = [];
-  tempMessage: Message = new Message();
 
-  constructor(public dialog: MatDialog, public userService: UsersService, public route: ActivatedRoute, public router: Router) { }
+  constructor(public dialog: MatDialog, public userService: UsersService, public route: ActivatedRoute, public router: Router, public chatService: ChatService, private _ngZone: NgZone) { }
 
   ngOnInit(): void {
     this.profileID = this.route.snapshot.paramMap.get('id'); //Parametro de la url
     //TODO: Hacer request de los mensajes, parsear y actualizar la variable nMensajes
     if (this.profileID == null) { this.router.navigateByUrl("/404"); return;  }
+    this.subscribeToEvents();
     this.userService.get(this.profileID).subscribe({
       next: (v) => {
         this.loading = false;
@@ -61,14 +63,6 @@ export class ChatComponent implements OnInit {
         this.router.navigateByUrl("/404");
       }
     });
-    //Pruebas
-    this.tempMessage = new Message();
-    this.tempMessage.clientuniqueid = this.userService.getToken();
-    this.tempMessage.message = "Esto es una prueba. Repetire todos los mensajes que me mandes";
-    this.tempMessage.isSent = false;
-    this.tempMessage.date = new Date();
-
-    this.history.push(this.tempMessage);
   }
 
   //Ejecutado cada vez que se modifica el input.
@@ -79,26 +73,18 @@ export class ChatComponent implements OnInit {
 
   //Ejecutado cuando el usuario quiere enviar el mensaje (enter o boton de enviar)
   send() {
+    if (this.profileID == null) { this.router.navigateByUrl("/404"); return;  }
     if(this.message != "" && this.nCaracteres<=280 && this.nMensajes<50) {
       //Create message
-      this.tempMessage = new Message();
-      this.tempMessage.clientuniqueid = this.userService.getToken();
-      this.tempMessage.message = this.message;
-      this.tempMessage.isSent = true;
-      this.tempMessage.date = new Date();
+      let tempMessage = new Message();
+      tempMessage.sender = this.userService.getToken();
+      tempMessage.reciever = this.profileID;
+      tempMessage.message = this.message;
+      tempMessage.isSent = true;
+      tempMessage.date = new Date();
 
-      this.history.push(this.tempMessage);
-      
-      //Pruebas
-      this.tempMessage = new Message();
-      this.tempMessage.clientuniqueid = this.userService.getToken();
-      this.tempMessage.message = this.message;
-      this.tempMessage.isSent = false;
-      this.tempMessage.date = new Date();
-      this.history.push(this.tempMessage);
-
-
-
+      this.chatService.sendMessage(tempMessage)
+      this.history.push(tempMessage);
 
       //Clear message displayed
       this.message = "";
@@ -110,6 +96,19 @@ export class ChatComponent implements OnInit {
       }
     }
   }
+
+  private subscribeToEvents(): void {  
+  
+    this.chatService.messageReceived.subscribe({
+      next: (message: Message) => {
+        this._ngZone.run(() => {
+          message.isSent = false;
+          console.log("recibido: ",message);
+          this.history.push(message);
+        });
+      }
+    });
+  } 
 
   openPopupCita(): void {
     const dialogRef = this.dialog.open(CitaPopup, {

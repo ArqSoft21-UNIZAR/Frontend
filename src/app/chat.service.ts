@@ -1,6 +1,7 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { HubConnection, HubConnectionBuilder } from '@microsoft/signalr';
 import { Message } from './message';
+import { UsersService } from './users.service';
   
 @Injectable()  
 export class ChatService {
@@ -10,7 +11,7 @@ export class ChatService {
   private connectionIsEstablished = false;
   private _hubConnection!: HubConnection;
   
-  constructor() {  
+  constructor(public userService: UsersService) {  
     this.createConnection();
     this.registerOnServerEvents();
     this.startConnection();
@@ -22,7 +23,7 @@ export class ChatService {
   
   private createConnection() {  
     this._hubConnection = new HubConnectionBuilder()  
-      .withUrl('<DIRECCION URL>/MessageHub')  
+      .withUrl('https://localhost:7022/MessageHub')  
       .build();
   }  
   
@@ -41,7 +42,7 @@ export class ChatService {
   }  
   
   private registerOnServerEvents(): void {  
-    this._hubConnection.on('MessageReceived', (data: any) => {  
+    this._hubConnection.on(this.userService.getToken(), (data: any) => {  
       this.messageReceived.emit(data);
     });
   }  

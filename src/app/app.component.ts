@@ -8,8 +8,9 @@ import { UtilityService } from './utility.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'Meet Me';
+
   constructor(public utilityService: UtilityService, public titleService: Title) { }  
+
   ngOnInit(): void {
     this.titleService.setTitle("Meet me")
   }

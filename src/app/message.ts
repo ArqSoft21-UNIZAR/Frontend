@@ -1,5 +1,6 @@
 export class Message {
-    clientuniqueid!: string;
+    sender!: string;
+    reciever!: string;
     isSent!: boolean;
     message!: string;
     date!: Date;
