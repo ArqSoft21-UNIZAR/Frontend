@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ChatComponent } from './chat/chat.component';
-import { CitaComponent } from './cita/cita.component';
-import { HomeComponent } from './home/home.component';
-import { LandingComponent } from './landing/landing.component';
-import { LoggedGuard } from './logged.guard';
-import { LoginComponent } from './login/login.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { ProfileComponent } from './profile/profile.component';
-import { RegisterComponent } from './register/register.component';
+import { ChatComponent } from './components/chat/chat.component';
+import { CitaComponent } from './components/cita/cita.component';
+import { HomeComponent } from './components/home/home.component';
+import { LandingComponent } from './components/landing/landing.component';
+import { LoggedGuard } from 'src/app/guards/logged.guard';
+import { LoginComponent } from './components/login/login.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { RegisterComponent } from './components/register/register.component';
 
 const routes: Routes = [
   { path: "", component: LandingComponent},

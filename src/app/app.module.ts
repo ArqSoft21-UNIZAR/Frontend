@@ -6,17 +6,17 @@ import { CookieService } from 'ngx-cookie-service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
-import { RegisterComponent } from './register/register.component';
-import { HomeComponent } from './home/home.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { LandingComponent } from './landing/landing.component';
-import { ProfileComponent } from './profile/profile.component';
-import { ChatComponent, CitaPopup } from './chat/chat.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { HomeComponent } from './components/home/home.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { LandingComponent } from './components/landing/landing.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { ChatComponent, CitaPopup } from './components/chat/chat.component';
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularMaterialModule } from './angular-material.module';
-import { CancelCitaPopup, CitaComponent } from './cita/cita.component';
+import { CancelCitaPopup, CitaComponent } from './components/cita/cita.component';
 
 @NgModule({
   declarations: [
