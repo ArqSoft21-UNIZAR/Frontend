@@ -21,7 +21,7 @@
             [percent]="100-(nCaracteres/2.8)"
             [title]="nCaracteres<=280 ? (280-nCaracteres).toString(): 'x'"
         ></circle-progress>
-        <img class="send" src="assets/send.png" (click)="send()">
+        <img class="send" src="assets/send.png" (click)="send()"  [ngStyle]="{'filter': this.nMensajes >= 50 ? 'brightness(50%)' : '', 'cursor':this.nMensajes < 50 ? 'pointer' : ''}">
     </div>
 </div>
 
