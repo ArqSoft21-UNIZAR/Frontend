@@ -23,6 +23,8 @@ export class ProfileComponent implements OnInit {
   noMeGusta1: string = "";
   noMeGusta2: string = "";
   noMeGusta3: string = "";
+  interes: string = "";
+  pasta: string = "";
   //Errores
   serviceError: boolean = false;
   serviceErrorMessage: string = "";
@@ -84,6 +86,11 @@ export class ProfileComponent implements OnInit {
     });
   }
 
+  formatLabel(value: number) {
+    this.pasta = '$'.repeat(value);
+    return '$'.repeat(value);
+  }  
+  
   public provincia_opciones = [
     "Álava",
     "Albacete",

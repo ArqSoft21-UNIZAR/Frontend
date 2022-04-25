@@ -94,12 +94,18 @@ input.tag {
   margin-bottom: 0.25em;
 }
 
+label.age {
+  margin-right: 5ch;
+}
+
 select {
   height: auto;
   padding: 8px 8px 8px 8px;
   
   margin-bottom: 1em;
   display: inline;
+  margin-right: 14px;
+  margin-top: 18px;
   
   background: white;
   color: #840705;

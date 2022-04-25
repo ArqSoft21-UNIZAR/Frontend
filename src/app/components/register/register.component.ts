@@ -18,13 +18,16 @@ export class RegisterComponent implements OnInit {
   confirmPassword: string = "";
   provincia: string = "";
   gender: string = "";
+  interes: string = "";
+  pasta: string = "";
   fnacimiento: Date = new Date();
   tagGood: Array<string> = [];
   tagBad: Array<string> = [];
 
   
   //Error handling
-  passwordError: boolean = false;
+  inputError: boolean = false;
+  inputErrorMessage: string = "";
   serviceError: boolean = false;
   serviceErrorMessage: string = "";
   userError: boolean = false;
@@ -35,11 +38,17 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
-    if(this.password != this.confirmPassword) {
-      this.passwordError = true;
+    if(this.password.length < 6) {
+      this.inputErrorMessage = "La contraseña debe tener al menos 6 caracteres.";
+      this.inputError = true;
       return;
     }
-    this.passwordError = false;
+    if(this.password != this.confirmPassword) {
+      this.inputErrorMessage = "Las contraseñas no coinciden.";
+      this.inputError = true;
+      return;
+    }
+    this.inputError = false;
     
     this.loading = true;
     this.userService.register(this.email, this.password,this.name, this.surname, this.gender, this.fnacimiento, this.provincia, this.tagGood[0], this.tagGood[1], this.tagGood[2], this.tagBad[0], this.tagBad[1], this.tagBad[2]).subscribe({
@@ -67,7 +76,13 @@ export class RegisterComponent implements OnInit {
     || this.tagGood[0] == undefined
     || this.gender == ""
     || this.provincia == ""
+    || this.interes == ""
   }
+
+  formatLabel(value: number) {
+    this.pasta = '$'.repeat(value);
+    return '$'.repeat(value);
+  }  
 
   public provincia_opciones = [
     "Álava",

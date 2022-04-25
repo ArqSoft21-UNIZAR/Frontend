@@ -70,19 +70,42 @@
             <div class="center">
               <div class="group">
                 <div class="group">
-                  <label for="age">Edad: {{this.age}}</label>
+                  <label for="age" class="age">{{this.age}} años</label>
                 </div>
                 <div class="group">
-                    <label for="provincia">Provincia:</label>
-                    <select class="provincia"
-                            required="required"
-                            [(ngModel)]="this.provincia"
-                            name="provincia">
-                      <option *ngFor="let item of provincia_opciones" value="{{item}}">
-                        {{item}}
-                      </option>
-                    </select>
-                  </div>
+                  <label for="provincia">Provincia:</label>
+                  <select class="provincia"
+                          required="required"
+                          [(ngModel)]="this.provincia"
+                          name="provincia">
+                    <option *ngFor="let item of provincia_opciones" value="{{item}}">
+                      {{item}}
+                    </option>
+                  </select>
+                </div>
+                <div class="group">
+                  <label for="interes">Interés en:</label>
+                  <select class="interes"
+                          [(ngModel)]="this.interes"
+                          name="interes"
+                          required="required"
+                          placeholder="Interes">
+                    <option value="Hombres">Hombres</option>
+                    <option value="Mujeres">Mujeres</option>
+                    <option value="Ambos">Ambos</option>
+                  </select>
+                </div>
+                <div class="group">
+                  <label for="pasta">¿Cuanto quieres gastar en las citas?</label>
+                  <mat-slider
+                    thumbLabel
+                    [displayWith]="formatLabel"
+                    tickInterval="1"
+                    step="1"
+                    min="1"
+                    max="3">
+                  </mat-slider>
+                </div>
               </div>
             </div>
           </div>

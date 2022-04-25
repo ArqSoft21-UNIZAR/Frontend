@@ -23,7 +23,7 @@
       />
       <div class="group">
         <div class="group">
-          <label for="age">Edad:</label>
+          <label for="age">Nacimiento:</label>
           <input
             type="date"
             [(ngModel)]="fnacimiento"
@@ -31,18 +31,6 @@
             class="fnacimiento"
             required="required"
           />
-        </div>
-        <div class="group">
-          <label for="gender">Sexo:</label>
-          <select class="gender"
-                  [(ngModel)]="this.gender"
-                  name="gender"
-                  required="required"
-                  placeholder="Sexo">
-            <option value="Hombre">Hombre</option>
-            <option value="Mujer">Mujer</option>
-            <option value="Otro">Otro</option>
-          </select>
         </div>
       </div>
     </div>
@@ -72,6 +60,20 @@
         required="required"
       />
       <div class="group">
+        <label for="gender">Sexo:</label>
+        <select class="gender"
+                [(ngModel)]="this.gender"
+                name="gender"
+                required="required"
+                placeholder="Sexo">
+          <option value="Hombre">Hombre</option>
+          <option value="Mujer">Mujer</option>
+          <option value="Otro">Otro</option>
+        </select>
+      </div>
+    </div>
+    <div class="center">
+      <div class="group">
         <label for="provincia">Provincia:</label>
         <select class="provincia"
                 required="required"
@@ -81,6 +83,29 @@
             {{item}}
           </option>
         </select>
+      </div>
+      <div class="group">
+        <label for="interes">Interés en:</label>
+        <select class="interes"
+                [(ngModel)]="this.interes"
+                name="interes"
+                required="required"
+                placeholder="Interes">
+          <option value="Hombres">Hombres</option>
+          <option value="Mujeres">Mujeres</option>
+          <option value="Ambos">Ambos</option>
+        </select>
+      </div>
+      <div class="group">
+        <label for="pasta">¿Cuanto quieres gastar en las citas?</label>
+        <mat-slider
+          thumbLabel
+          [displayWith]="formatLabel"
+          tickInterval="1"
+          step="1"
+          min="1"
+          max="3">
+        </mat-slider>
       </div>
     </div>
     <hr />
@@ -145,8 +170,8 @@
     
 
   <div class="error">
-		<div *ngIf="passwordError">
-			Las contraseñas no coinciden.
+		<div *ngIf="inputError">
+			{{this.inputErrorMessage}}
 		</div>
 
 		<div *ngIf="userError">
