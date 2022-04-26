@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { UsersService } from '../users.service';
-import { UtilityService } from '../utility.service';
+import { UsersService } from 'src/app/services/users.service';
+import { UtilityService } from 'src/app/services/utility.service';
 
 @Component({
   selector: 'app-profile',
@@ -23,6 +23,8 @@ export class ProfileComponent implements OnInit {
   noMeGusta1: string = "";
   noMeGusta2: string = "";
   noMeGusta3: string = "";
+  interes: string = "";
+  pasta: string = "";
   //Errores
   serviceError: boolean = false;
   serviceErrorMessage: string = "";
@@ -84,6 +86,11 @@ export class ProfileComponent implements OnInit {
     });
   }
 
+  formatLabel(value: number) {
+    this.pasta = '$'.repeat(value);
+    return '$'.repeat(value);
+  }  
+  
   public provincia_opciones = [
     "Álava",
     "Albacete",

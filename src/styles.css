@@ -110,6 +110,28 @@ select {
   text-align: left;
 }
 
+.mat-slider-thumb {
+	background-color: #840705 !important;
+}
+
+.mat-slider-thumb-label {
+	background-color: #840705 !important;
+}
+
+.mat-slider-thumb-label-text {
+  color: white !important;
+}
+.mat-slider-track-fill {
+	background-color: #840705 !important;
+}
+
+.mat-slider-track-fill,
+.mat-slider-wrapper,
+.mat-slider-track-wrapper,
+.mat-slider-track-background {
+    height: 5px !important;
+}
+
 /*-------------------------- BOTONES --------------------------*/
 button {
   display: block;

@@ -70,6 +70,8 @@ input.tag {
 select {
   display: inline;
   margin-bottom: 1em;
+  margin-right: 14px;
+  margin-top: 18px;
   height: auto;
 }
 

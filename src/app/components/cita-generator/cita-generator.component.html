@@ -1,0 +1,35 @@
+<div class="cita">
+    <div class="titulo">
+        <h1>Propón plan y lugar</h1> 
+        <button class="red suggest">¡Ayúdame a elegir!</button>
+    </div>
+    <form class="custom-form" method="post">
+        <div class="split left">
+            <div class="center">
+                <textarea
+                placeholder="Explica lo que te gustaria hacer en esta cita..."
+                rows="12"
+                name="plan"
+                [(ngModel)]='plan'
+                ></textarea>
+            </div>
+        </div>
+        <div class="split right">
+            <div class="center">
+                <label>Lugar: </label>
+                <input
+                    type="text"
+                    [(ngModel)]="lugar"
+                    name="lugar"
+                    class="lugar"
+                />
+            </div>
+            <div id="ol-map" class="map-container" (dblclick)="getCoord($event)" (mouseenter)="this.mouseOver=true;" (mouseleave)="this.mouseOver=false;"></div>
+            <p class="recordatorio" [ngStyle]="{'opacity': ((this.mouseOver ? 1 : 0) * 100)+'%'}">Doble click para seleccionar un lugar!</p>
+        </div>
+    </form>
+    <p>
+        INSERT INTO Plan VALUES(DEFAULT,'{{this.lugar}}','{{this.plan}}',{{this.coordinate[0]}},{{this.coordinate[1]}},true);
+    </p>
+
+</div>

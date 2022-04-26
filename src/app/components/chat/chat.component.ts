@@ -1,10 +1,10 @@
 import { Component, Inject, NgModule, NgZone, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Message } from '../message';
-import { UsersService } from '../users.service';
+import { Message } from 'src/app/classes/message';
+import { UsersService } from 'src/app/services/users.service';
+import { UtilityService } from 'src/app/services/utility.service';
+import { ChatService } from 'src/app/services/chat.service';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { UtilityService } from '../utility.service';
-import { ChatService } from '../chat.service';
 
 export interface CitaPopupData {
   destinatario: string;

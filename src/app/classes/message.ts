@@ -4,4 +4,4 @@ export class Message {
     isSent!: boolean;
     message!: string;
     date!: Date;
-}  
+}

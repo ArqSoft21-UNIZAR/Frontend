@@ -1,6 +1,6 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { HubConnection, HubConnectionBuilder } from '@microsoft/signalr';
-import { Message } from './message';
+import { Message } from 'src/app/classes/message';
 import { UsersService } from './users.service';
   
 @Injectable()  

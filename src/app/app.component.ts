@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { UtilityService } from './utility.service';
+import { UtilityService } from 'src/app/services/utility.service';
 
 @Component({
   selector: 'app-root',

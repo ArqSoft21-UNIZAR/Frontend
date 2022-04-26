@@ -12,7 +12,7 @@ import { Feature } from 'ol';
 import { Geometry, Point } from 'ol/geom';
 import Icon from 'ol/style/Icon';
 import Style from 'ol/style/Style';
-import { UtilityService } from '../utility.service';
+import { UtilityService } from 'src/app/services/utility.service';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 export interface CancelCitaPopupData {
