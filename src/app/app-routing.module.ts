@@ -9,12 +9,14 @@ import { LoginComponent } from './components/login/login.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { RegisterComponent } from './components/register/register.component';
+import { CitaGeneratorComponent } from './components/cita-generator/cita-generator.component';
 
 const routes: Routes = [
   { path: "", component: LandingComponent},
   { path: "home", component: HomeComponent, canActivate: [LoggedGuard]},
   { path: "login", component: LoginComponent},
   { path: "register", component: RegisterComponent},
+  { path: "generator", component: CitaGeneratorComponent},
   { path: "profile/:id", component: ProfileComponent, canActivate: [LoggedGuard]},
   { path: "chat/:id", component: ChatComponent, canActivate: [LoggedGuard]},
   { path: "cita/:id", component: CitaComponent, canActivate: [LoggedGuard]},

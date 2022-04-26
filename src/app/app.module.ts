@@ -17,6 +17,7 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularMaterialModule } from './angular-material.module';
 import { CancelCitaPopup, CitaComponent } from './components/cita/cita.component';
+import { CitaGeneratorComponent } from './components/cita-generator/cita-generator.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import { CancelCitaPopup, CitaComponent } from './components/cita/cita.component
     CitaPopup,
     CitaComponent,
     CancelCitaPopup,
+    CitaGeneratorComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,3 @@
-<img class="back" [routerLink]="'/home'" src="assets/back.png">
 <div class="cita">
     <div class="titulo">
         <h1>Propón plan y lugar</h1> 
@@ -29,11 +28,8 @@
             <p class="recordatorio" [ngStyle]="{'opacity': ((this.mouseOver ? 1 : 0) * 100)+'%'}">Doble click para seleccionar un lugar!</p>
         </div>
     </form>
-    <div class="split left" id="botones">
-        <button class="white cancelar respuesta" (click)="this.openPopupCita();">Cancelar cita 💔</button>
-    </div>
-    <div class="split right" id="botones">
-        <button class="red enviar respuesta" (click)="this.UtilityService.openSnack('Prueba aceptado');">Enviar propuesta 💌</button>
-    </div>
+    <p>
+        INSERT INTO Plan VALUES(DEFAULT,'{{this.lugar}}','{{this.plan}}',{{this.coordinate[0]}},{{this.coordinate[1]}},true);
+    </p>
 
 </div>
