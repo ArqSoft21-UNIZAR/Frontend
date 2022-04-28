@@ -40,7 +40,9 @@ export class CitaPopup {
 
 export class ChatComponent implements OnInit {
   loading: boolean = true;
-  profileID!: string | null;
+
+  idroute!: string | null;
+  profileID!: string;
   name: string = "";
   nCaracteres: number = 0;
   nMensajes: number = 0;
@@ -50,16 +52,27 @@ export class ChatComponent implements OnInit {
   constructor(public dialog: MatDialog, public userService: UsersService, public route: ActivatedRoute, public router: Router, public chatService: ChatService, private _ngZone: NgZone) { }
 
   ngOnInit(): void {
-    this.profileID = this.route.snapshot.paramMap.get('id'); //Parametro de la url
+    this.idroute = this.route.snapshot.paramMap.get('id'); //Parametro de la url
     //TODO: Hacer request de los mensajes, parsear y actualizar la variable nMensajes
-    if (this.profileID == null) { this.router.navigateByUrl("/404"); return;  }
+    if (this.idroute == null) { this.router.navigateByUrl("/404"); return;  }
+    this.profileID = this.idroute;
     this.subscribeToEvents();
     this.userService.get(this.profileID).subscribe({
       next: (v) => {
-        this.loading = false;
         this.name = v.nombre + " " + v.apellidos
+        this.chatService.get(this.userService.getToken(),this.profileID).subscribe({
+          next: (v) => {
+            this.history = this.history.concat(v.data);
+            this.loading = false;
+          },
+          error: (e) => {
+            console.log(e);
+            this.router.navigateByUrl("/404");
+          }
+        });
       },
       error: (e) => {
+        console.log(e);
         this.router.navigateByUrl("/404");
       }
     });
@@ -73,7 +86,6 @@ export class ChatComponent implements OnInit {
 
   //Ejecutado cuando el usuario quiere enviar el mensaje (enter o boton de enviar)
   send() {
-    if (this.profileID == null) { this.router.navigateByUrl("/404"); return;  }
     if(this.message != "" && this.nCaracteres<=280 && this.nMensajes<50) {
       //Create message
       let tempMessage = new Message();
