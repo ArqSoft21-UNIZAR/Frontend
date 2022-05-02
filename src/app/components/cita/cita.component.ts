@@ -111,6 +111,10 @@ export class CitaComponent implements OnInit {
         this.lugar = v.donde;
         this.plan = v.plan;
         this.f.setGeometry(new Point(olProj.fromUserCoordinate([v.lat, v.lon],this.projBuena)))
+        if(this.map.getLayers().getLength()==1) {
+          this.map.addLayer(this.l);
+        }
+        this.loading = false;
       },
       error: (e) => {
         this.loading = false;
