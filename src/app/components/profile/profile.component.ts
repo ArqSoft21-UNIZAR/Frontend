@@ -48,6 +48,8 @@ export class ProfileComponent implements OnInit {
           this.noMeGusta1 = v.noMeGusta1;
           this.noMeGusta2 = v.noMeGusta2;
           this.noMeGusta3 = v.noMeGusta3;
+          this.pasta = '$'.repeat(v.capacidad);
+          this.interes = v.orientacion;
           this.loading = false;
         },
         error: (e) => {
@@ -72,7 +74,7 @@ export class ProfileComponent implements OnInit {
 
   updateProfile() {
     this.loading = true;
-    this.userService.edit(this.userService.getToken(), this.name, this.surname, this.gender, this.provincia, this.meGusta1, this.meGusta2, this.meGusta3, this.noMeGusta1, this.noMeGusta2, this.noMeGusta3).subscribe({
+    this.userService.edit(this.userService.getToken(), this.name, this.surname, this.gender, this.provincia, this.meGusta1, this.meGusta2, this.meGusta3, this.noMeGusta1, this.noMeGusta2, this.noMeGusta3, this.interes, this.pasta.length).subscribe({
       next: (v) => {
           this.loading = false;
           this.utilityService.goHome();
