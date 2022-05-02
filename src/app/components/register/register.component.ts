@@ -51,7 +51,7 @@ export class RegisterComponent implements OnInit {
     this.inputError = false;
     
     this.loading = true;
-    this.userService.register(this.email, this.password,this.name, this.surname, this.gender, this.fnacimiento, this.provincia, this.tagGood[0], this.tagGood[1], this.tagGood[2], this.tagBad[0], this.tagBad[1], this.tagBad[2]).subscribe({
+    this.userService.register(this.email, this.password,this.name, this.surname, this.gender, this.fnacimiento, this.provincia, this.tagGood[0], this.tagGood[1], this.tagGood[2], this.tagBad[0], this.tagBad[1], this.tagBad[2], this.interes, this.pasta.length).subscribe({
       next: (v) => {
         this.userService.setToken(this.email);
         // NOTE(Marcos): Para borrar la cookie (hacer logout): this.cookies.delete("token");
