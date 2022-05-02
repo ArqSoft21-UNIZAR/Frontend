@@ -1,8 +1,11 @@
+<div class="loading" *ngIf="loading">
+    <div class="ring"></div>
+  </div>
 <img class="back" [routerLink]="'/home'" src="assets/back.png">
 <div class="cita">
     <div class="titulo">
         <h1>Propón plan y lugar</h1> 
-        <button class="red suggest">¡Ayúdame a elegir!</button>
+        <button class="red suggest" (click)="autoFillAll()">¡Ayúdame a elegir!</button>
     </div>
     <form class="custom-form" method="post">
         <div class="split left">

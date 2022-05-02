@@ -14,6 +14,7 @@ import Icon from 'ol/style/Icon';
 import Style from 'ol/style/Style';
 import { UtilityService } from 'src/app/services/utility.service';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { CitaService } from 'src/app/services/cita.service';
 
 export interface CancelCitaPopupData {
   destinatario: string;
@@ -46,6 +47,7 @@ export class CancelCitaPopup {
 })
 export class CitaComponent implements OnInit {
   profileID!: string | null;
+  loading: boolean = false;
   // ------------------ FORM ------------------ //
   lugar: string = "";
   plan: string = "";
@@ -56,7 +58,7 @@ export class CitaComponent implements OnInit {
   l!: VectorLayer<VectorSource<Geometry>>;
   projBuena!: olProj.Projection | null;
 
-  constructor(public dialog: MatDialog, public route: ActivatedRoute, public router: Router, public UtilityService: UtilityService) { }
+  constructor(public dialog: MatDialog, public route: ActivatedRoute, public router: Router, public UtilityService: UtilityService, public CitaService: CitaService) { }
 
   ngOnInit(): void {
     this.projBuena = olProj.get('EPSG:3857');
@@ -97,6 +99,24 @@ export class CitaComponent implements OnInit {
 
     this.profileID = this.route.snapshot.paramMap.get('id'); //Parametro de la url
     if (this.profileID == null) { this.router.navigateByUrl("/404"); return;  }
+  }
+
+  //autorellenar los campos
+  autoFillAll(){
+    this.loading = true;
+    this.CitaService.getDefault().subscribe({
+      next: (v) => {
+        this.projBuena = olProj.get('EPSG:3857');
+        if(this.projBuena == null) { return; }
+        this.lugar = v.donde;
+        this.plan = v.plan;
+        this.f.setGeometry(new Point(olProj.fromUserCoordinate([v.lat, v.lon],this.projBuena)))
+      },
+      error: (e) => {
+        this.loading = false;
+        console.error(e);
+      }
+    });
   }
 
   getCoord(event: any){
