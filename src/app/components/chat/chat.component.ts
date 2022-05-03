@@ -5,6 +5,7 @@ import { UsersService } from 'src/app/services/users.service';
 import { UtilityService } from 'src/app/services/utility.service';
 import { ChatService } from 'src/app/services/chat.service';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MatchesService } from 'src/app/services/matches.service';
 
 export interface CitaPopupData {
   destinatario: string;
@@ -16,13 +17,21 @@ export interface CitaPopupData {
   styleUrls: ['cita-popup.component.css']
 })
 export class CitaPopup {
-  constructor(public dialogRef: MatDialogRef<CitaPopup>, public router: Router, public UtilityService: UtilityService, @Inject(MAT_DIALOG_DATA) public data: CitaPopupData) {}
+  constructor(public dialogRef: MatDialogRef<CitaPopup>, public router: Router, public UtilityService: UtilityService, @Inject(MAT_DIALOG_DATA) public data: CitaPopupData, public matchesService : MatchesService, public userService: UsersService) {}
   
   noCita(): void {
-    //TODO: Hacer desmatch con la persona
-    this.UtilityService.openSnack("Contacto eliminado")
-    this.router.navigateByUrl("/home");
-    this.dialogRef.close();
+    this.matchesService.deleteMatch(this.userService.getToken(),this.data.destinatario).subscribe({
+      next: (v) => {
+        this.UtilityService.openSnack("Contacto eliminado")
+        this.router.navigateByUrl("/home");
+        this.dialogRef.close();
+      },
+      error: (e) => {
+        console.log(e);
+        this.dialogRef.close();
+      }
+    });
+    
   }
 
   siCita(): void {
