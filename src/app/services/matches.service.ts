@@ -50,7 +50,7 @@ export class MatchesService {
   deleteMatch(email1: string, email2: string): Observable<any> {
     return this.http.post("https://meetme-b.herokuapp.com/matches/delete",
                           { 
-                            email: email1,
+                            email1: email1,
                             email2: email2,
                           });
   }
