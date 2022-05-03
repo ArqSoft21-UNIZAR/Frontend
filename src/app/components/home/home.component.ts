@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MatchesService } from 'src/app/services/matches.service';
 import { UsersService } from 'src/app/services/users.service';
 import { UtilityService } from 'src/app/services/utility.service';
 
@@ -9,9 +10,28 @@ import { UtilityService } from 'src/app/services/utility.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(public userService: UsersService, public utilityService: UtilityService) { }
+  constructor(public userService: UsersService, public matchesService: MatchesService, public utilityService: UtilityService) { }
 
   ngOnInit(): void {
+    this.matchesService.getMatches(this.userService.getToken()).subscribe({
+      next: (v) => {
+        console.log(v);
+        //TODO
+      },
+      error: (e) => {
+        console.error(e)
+      }
+    });
   }
 
+  botonNewMatch(): void {
+    this.matchesService.requestNew(this.userService.getToken()).subscribe({
+      next: (v) => {
+        window.location.reload();
+      },
+      error: (e) => {
+        console.error(e)
+      }
+    });
+  }
 }
