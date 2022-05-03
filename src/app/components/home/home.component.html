@@ -1,5 +1,5 @@
 <img class="profile" [routerLink]="'/profile/'+userService.getToken()" src="assets/perfil.png">
-<button class="white soliChat">Solicitar chat diario</button>
+<button class="white soliChat" (click)="botonNewMatch()">Solicitar chat diario</button>
 <div class="home">
 Aqui iran los chats :)
 <button class="red logout" (click)="this.userService.deleteToken()">Logout</button>
