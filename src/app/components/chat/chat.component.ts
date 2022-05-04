@@ -62,7 +62,6 @@ export class ChatComponent implements OnInit {
 
   ngOnInit(): void {
     this.idroute = this.route.snapshot.paramMap.get('id'); //Parametro de la url
-    //TODO: Hacer request de los mensajes, parsear y actualizar la variable nMensajes
     if (this.idroute == null) { this.router.navigateByUrl("/404"); return;  }
     this.profileID = this.idroute;
     this.subscribeToEvents();
@@ -72,6 +71,7 @@ export class ChatComponent implements OnInit {
         this.chatService.get(this.userService.getToken(),this.profileID).subscribe({
           next: (v) => {
             this.history = this.history.concat(v.data);
+            this.nMensajes = v.data.length;
             this.loading = false;
           },
           error: (e) => {
