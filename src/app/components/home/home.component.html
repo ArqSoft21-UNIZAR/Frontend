@@ -10,6 +10,7 @@
                 <h2>{{t.nombre}} {{t.apellidos}}</h2>
             </div>
         </tr>
+        <h2 *ngIf="this.matchesData.length == 0">Todavia no tienes matches :(</h2>
     </tbody>
 </table>
 
