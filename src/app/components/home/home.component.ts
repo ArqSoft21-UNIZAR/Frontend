@@ -9,6 +9,7 @@ import { UtilityService } from 'src/app/services/utility.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+  matchesData: any;
 
   constructor(public userService: UsersService, public matchesService: MatchesService, public utilityService: UtilityService) { }
 
@@ -17,6 +18,7 @@ export class HomeComponent implements OnInit {
       next: (v) => {
         console.log(v);
         //TODO
+        this.matchesData = v;
       },
       error: (e) => {
         console.error(e)

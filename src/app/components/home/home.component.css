@@ -13,3 +13,27 @@ button.soliChat {
   top: 30px;
   left: 3%;
 }
+
+button.logout {
+  float: right;
+  margin-right: 3.7%;
+}
+
+.imgperfil {
+  max-width: 4em;
+  max-height: 4em;
+  margin-right: 1ch;
+}
+
+.persona {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 90%;
+  cursor: pointer;
+}
+
+table {
+  width: 100%;
+}

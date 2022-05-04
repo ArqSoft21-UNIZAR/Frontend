@@ -1,7 +1,16 @@
 <img class="profile" [routerLink]="'/profile/'+userService.getToken()" src="assets/perfil.png">
 <button class="white soliChat" (click)="botonNewMatch()">Solicitar chat diario</button>
 <div class="home">
-Aqui iran los chats :)
-<button class="red logout" (click)="this.userService.deleteToken()">Logout</button>
-<a routerLink="/chat/hola@gmail.com">Prueba de chats</a>
+<button class="red logout" (click)="this.userService.deleteToken(); this.utilityService.goHome()">Logout</button>
+<table>
+    <tbody>
+        <tr *ngFor="let t of matchesData">
+            <div class="default persona" [routerLink]="'/chat/'+t.email">
+                <img class="imgperfil" src="assets/account-circle.png">
+                <h2>{{t.nombre}} {{t.apellidos}}</h2>
+            </div>
+        </tr>
+    </tbody>
+</table>
+
 </div>
