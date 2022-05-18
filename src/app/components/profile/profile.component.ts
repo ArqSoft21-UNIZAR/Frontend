@@ -76,8 +76,9 @@ export class ProfileComponent implements OnInit {
     this.loading = true;
     this.userService.edit(this.userService.getToken(), this.name, this.surname, this.gender, this.provincia, this.meGusta1, this.meGusta2, this.meGusta3, this.noMeGusta1, this.noMeGusta2, this.noMeGusta3, this.interes, this.pasta.length).subscribe({
       next: (v) => {
-          this.loading = false;
-          this.utilityService.goHome();
+        console.log(v)
+        this.loading = false;
+        this.utilityService.goHome();
       },
       error: (e) => {
         this.loading = false;
